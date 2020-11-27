@@ -1,7 +1,9 @@
 # pycharm
 .idea/
-venv/
 
 __pycache__/
 *.py[cod]
 *$py.class
+
+# 虚拟环境
+venv/
