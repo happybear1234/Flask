@@ -10,18 +10,20 @@
             border-radius: 0;
             text-align: center;
             margin-top: 200px;
-            margin-left: 500px ;
+            margin-left: 500px;
             margin-right: 500px;
         }
+
         a {
-            text-decoration: none;
             color: #000000;
         }
+
         li {
             list-style: none;
             display: inline-block;
             margin-right: 75px;
         }
+
         li:last-child {
             margin: 0;
         }
@@ -29,24 +31,55 @@
     {% block css %}{% endblock %}
 </head>
 <body>
+<div>
 
-<ul class="nav nav-tabs ">
-    <li role="presentation"><a href="#">计算输入</a></li>
-    <li role="presentation"><a href="#">舰队可用度评估</a></li>
-    <li role="presentation"><a href="#">试验可用度评估</a></li>
-    <li role="presentation"><a href="#">马氏可用度评估</a></li>
-    <li role="presentation" class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
-           aria-expanded="false">
-            设备参数计算 <span class="caret"></span>
-        </a>
-        <ul class="dropdown-menu">
-            <li role="presentation"><a href="#">MTBF评估</a></li>
-            <li role="presentation"><a href="#">MTTR评估</a></li>
-            <li role="presentation"><a href="#">MDT评估</a></li>
-        </ul>
-    </li>
-</ul>
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active"><a href="#calculate" aria-controls="calculate" role="tab"
+                                                  data-toggle="tab">计算输入</a></li>
+        <li role="presentation"><a href="#brigade" aria-controls="brigade" role="tab" data-toggle="tab">舰队可用度评估</a></li>
+        <li role="presentation"><a href="#experiment" aria-controls="experiment" role="tab"
+                                   data-toggle="tab">试验可用度评估</a></li>
+        <li role="presentation"><a href="#mars" aria-controls="mars" role="tab" data-toggle="tab">马氏可用度评估</a></li>
+        <li role="presentation" class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#parameter" role="button" aria-haspopup="true"
+               aria-expanded="false">
+                设备参数计算 <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu" role="tab">
+                <li><a href="#MTBF" aria-controls="MTBF" data-toggle="tab">MTBF评估</a></li>
+                <li><a href="#MTTR" aria-controls="MTTR" data-toggle="tab">MTTR评估</a></li>
+                <li><a href="#MDT" aria-controls="MDT" data-toggle="tab">MDT评估</a></li>
+            </ul>
+        </li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane fade in active" id="calculate">
+            <p>计算输入页面</p>
+        </div>
+        <div role="tabpanel" class="tab-pane fade" id="brigade">
+            <p>舰队可用度页面</p>
+        </div>
+        <div role="tabpanel" class="tab-pane fade" id="experiment">
+            <p>试验可用度页面</p>
+        </div>
+        <div role="tabpanel" class="tab-pane fade" id="mars">
+            <p>马氏可用度页面</p>
+        </div>
+        <div role="tabpanel" class="tab-pane fade" id="MTBF">
+            <p>MTBF页面</p>
+        </div>
+        <div role="tabpanel" class="tab-pane fade" id="MTTR">
+            <p>MTTR页面</p>
+        </div>
+        <div role="tabpanel" class="tab-pane fade" id="MDT">
+            <p>MDT页面</p>
+        </div>
+    </div>
+
+</div>
 {% block content %}{% endblock %}
 
 <script src="{{ url_for('static',filename='js/jquery-3.5.1.min.js') }}"></script>

@@ -7,3 +7,6 @@ __pycache__/
 
 # 虚拟环境
 venv/
+
+# 测试
+test/
