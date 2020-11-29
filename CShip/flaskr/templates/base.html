@@ -1,49 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" name="viewport" content="width=device-width,initial-scale=1 maximum-scale=1.0,minimum-scale=1.0">
     <title>{% block title %}可视化评估系统{% endblock %}</title>
     <link rel="stylesheet" href="{{ url_for('static',filename='plugin/bootstrap-3.3.7-dist/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ url_for('static',filename='plugin/font-awesome-4.7.0/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/calculate.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/my_echarts.css') }}">
     <style>
-        .nav-tabs {
-            border-radius: 0;
-            text-align: center;
-            margin-top: 200px;
-            margin-left: 500px;
-            margin-right: 500px;
-        }
-
-        a {
-            color: #000000;
-        }
-
-        li {
-            list-style: none;
-            display: inline-block;
-            margin-right: 75px;
-        }
-
-        li:last-child {
-            margin: 0;
+        .my-nav {
+            width: 100%;
+            margin-top: 100px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 30px 30px 30px 30px;
+            -webkit-box-shadow: 5px 10px 10px rgba(0, 0, 0, .05);
+            box-shadow: 5px 10px 10px rgba(0, 0, 0, .05);
         }
     </style>
-    {% block css %}{% endblock %}
 </head>
 <body>
 <div>
 
-    <!-- Nav tabs -->
-    <ul class="nav nav-tabs" role="tablist">
+    <!-- 导航区 -->
+    <ul class="nav nav-tabs my-nav" role="tablist">
         <li role="presentation" class="active"><a href="#calculate" aria-controls="calculate" role="tab"
-                                                  data-toggle="tab">计算输入</a></li>
-        <li role="presentation"><a href="#brigade" aria-controls="brigade" role="tab" data-toggle="tab">舰队可用度评估</a></li>
+                                                  data-toggle="tab" style="color: #000000;margin-right: 80px">计算输入</a>
+        </li>
+        <li role="presentation"><a href="#brigade" aria-controls="brigade" role="tab" data-toggle="tab"
+                                   style="color: #000000;margin-right: 80px">舰队可用度评估</a></li>
         <li role="presentation"><a href="#experiment" aria-controls="experiment" role="tab"
-                                   data-toggle="tab">试验可用度评估</a></li>
-        <li role="presentation"><a href="#mars" aria-controls="mars" role="tab" data-toggle="tab">马氏可用度评估</a></li>
+                                   data-toggle="tab" style="color: #000000;margin-right: 80px">试验可用度评估</a></li>
+        <li role="presentation"><a href="#mars" aria-controls="mars" role="tab" data-toggle="tab"
+                                   style="color: #000000;margin-right: 80px">马氏可用度评估</a></li>
         <li role="presentation" class="dropdown">
             <a class="dropdown-toggle" data-toggle="dropdown" href="#parameter" role="button" aria-haspopup="true"
-               aria-expanded="false">
+               aria-expanded="false" style="color: #000000;margin-right: 80px">
                 设备参数计算 <span class="caret"></span>
             </a>
             <ul class="dropdown-menu" role="tab">
@@ -54,16 +46,27 @@
         </li>
     </ul>
 
-    <!-- Tab panes -->
+    <!-- 面板区 -->
     <div class="tab-content">
         <div role="tabpanel" class="tab-pane fade in active" id="calculate">
-            <p>计算输入页面</p>
+{#            <div class="calculate">#}
+{#                                <label>请输入系统名</label>#}
+{#                                <select name="plan" id="calculateSystem">#}
+{#                                    <option value="none" selected disabled hidden>请选择选项</option>#}
+{#                                    {% for feild in products %}#}
+{#                                        <option value="calculateSystem">{{ feild }}</option>#}
+{#                                    {% endfor %}#}
+{#                                </select>#}
+{#            </div>#}
         </div>
         <div role="tabpanel" class="tab-pane fade" id="brigade">
-            <p>舰队可用度页面</p>
+            <div style="margin-top: 40px;">舰队可用度页面</div>
+            <div  id="echartsBrigade" style="min-height: 400px;width: 100%;overflow: hidden;"></div>
         </div>
         <div role="tabpanel" class="tab-pane fade" id="experiment">
             <p>试验可用度页面</p>
+            <div id="echartsExperiment" style="min-height: 400px;width: 100%;overflow: hidden;">
+            </div>
         </div>
         <div role="tabpanel" class="tab-pane fade" id="mars">
             <p>马氏可用度页面</p>
@@ -78,12 +81,33 @@
             <p>MDT页面</p>
         </div>
     </div>
-
 </div>
-{% block content %}{% endblock %}
-
-<script src="{{ url_for('static',filename='js/jquery-3.5.1.min.js') }}"></script>
+<script src="{{ url_for('static',filename='plugin/jquery-3.5.1.min.js') }}"></script>
 <script src="{{ url_for('static',filename='plugin/bootstrap-3.3.7-dist/js/bootstrap.min.js') }}"></script>
-{% block js %}{% endblock %}
+<script src="{{ url_for('static',filename='plugin/echarts.min.js') }}"></script>
+<script src="{{ url_for('static',filename='js/my_echarts.js') }}"></script>
+
+<script type="text/javascript">
+    // 基于准备好的dom，初始化echarts实例
+    var charts = [];
+    var chart1 = echarts.init(document.getElementById('echartsBrigade'));
+    var chart2 = echarts.init(document.getElementById('echartsExperiment'));
+    // 使用刚指定的配置项和数据显示图表。
+    chart1.setOption(option1);
+    chart2.setOption(option2);
+    charts.push(chart1);
+    charts.push(chart2);
+    $(window).resize(function () {
+        for (var i = 0; i < charts.length; i++) {
+            charts[i].resize();
+        }
+    });
+    //解决tab切换不显示问题 在加载窗口后重新渲染。
+    $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+        for (var i = 0; i < charts.length; i++) {
+            charts[i].resize();
+        }
+    });
+</script>
 </body>
 </html>

@@ -1,0 +1,32 @@
+<!--
+为ECharts准备一个大小（宽高）
+
+-->
+.css_pic1 {
+    height: 800px;
+    width: 800px;
+    /*margin-top: 30px;*/
+}
+
+.css_pic2 {
+    height: 400px;
+    width: 600px;
+    /*margin-top: 72px;*/
+}
+
+/*.right_title{*/
+/*	width: 90%;*/
+/*	margin-left: 10%;*/
+/*}*/
+/*.nav>li>a{*/
+/*	padding: 5px 18px;*/
+/*	margin-top: 10px;*/
+/*}*/
+/*body{*/
+/*	background-color:#009688;*/
+/*}*/
+/*.container{*/
+/*	background-color:#dcedf5;*/
+/*	margin-top: 25px;*/
+/*	border-radius: 15px;*/
+/*}*/
