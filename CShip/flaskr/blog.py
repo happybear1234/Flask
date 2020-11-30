@@ -1,49 +1,56 @@
 from flask import Flask
 from flask import render_template, request
 import os
+import pymysql
 
 app = Flask(__name__)
 
 
+# from .settings import ProductionConfig
+# # 配置文件
+# app.config.from_object(ProductionConfig())
+
+
 @app.route('/')
 def basic():
-    return render_template('basic.html')
+    return render_template('calculate.html')
 
 
 @app.route('/calculate')
 def calculate():
-    if request.method == 'GET':
-        return render_template('calculate.html')
+    return render_template('calculate.html')
+
 
 @app.route('/brigade')
 def brigade():
-    if request.method == 'GET':
-        return render_template('brigade.html')
+    class_list={'id': 11, 'class_name': '一班'}, {'id': 22, 'class_name': '二班'}, {'id': 33, 'class_name': '三班'}
+    return render_template('brigade.html')
+
 
 @app.route('/experiment')
 def experiment():
-    if request.method == 'GET':
-        return render_template('experiment.html')
+    return render_template('experiment.html')
+
 
 @app.route('/mars')
 def mars():
-    if request.method == 'GET':
-        return render_template('mars.html')
+    return render_template('mars.html')
+
 
 @app.route('/MDT')
 def MDT():
-    if request.method == 'GET':
-        return render_template('MDT.html')
+    return render_template('MDT.html')
+
 
 @app.route('/MTBF')
 def MTBF():
-    if request.method == 'GET':
-        return render_template('MTBF.html')
+    return render_template('MTBF.html')
+
 
 @app.route('/MTTR')
 def MTTR():
-    if request.method == 'GET':
-        return render_template('MTTR.html')
+    return render_template('MTTR.html',)
+
 
 # @app.route('/')
 # def base():
@@ -51,3 +58,16 @@ def MTTR():
 
 if __name__ == '__main__':
     app.run()
+
+
+def class_list():
+    conn = pymysql.connect(host='127.0.0.1', port=3306, user='root', passwd='20051104', db='django_StudenManage',
+                           charset="utf8")
+    cursor = conn.cursor(cursor=pymysql.cursors.DictCursor)
+    cursor.execute("select id,class_name from Class")
+    class_list = cursor.fetchall()
+    cursor.close()
+    conn.close()
+    print(class_list)
+    return class_list
+class_list()
