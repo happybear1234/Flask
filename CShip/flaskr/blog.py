@@ -1,7 +1,7 @@
 from flask import Flask
 from flask import render_template, request
 import os
-import pymysql
+import pymysql,json
 
 app = Flask(__name__)
 
@@ -64,10 +64,14 @@ def class_list():
     conn = pymysql.connect(host='127.0.0.1', port=3306, user='root', passwd='20051104', db='django_StudenManage',
                            charset="utf8")
     cursor = conn.cursor(cursor=pymysql.cursors.DictCursor)
-    cursor.execute("select id,class_name from Class")
+    cursor.execute("select count,class_name from Class")
     class_list = cursor.fetchall()
     cursor.close()
     conn.close()
+    class_list={'人数': [{"一班": 35}, {"二班": 20}, {"三班": 34}]}
     print(class_list)
+    json_classlist=json.dumps(class_list,ensure_ascii=False)
+    print(type(json_classlist))
+    print(json_classlist)
     return class_list
 class_list()
