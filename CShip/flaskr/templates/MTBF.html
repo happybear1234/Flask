@@ -89,7 +89,7 @@
                     </div>
                     <!--修改-->
                     <button id="button1"
-                            onclick="searchOnclick('myForm1','echartsMTBF1',option_line,'startDate1','endDate1','/getdate','/t')"
+                            onclick="searchOnclick('myForm1','echartsMTBF1',option_line,'startDate1','endDate1','/dataurl')"
                             style="margin-left: -20px" type="button"
                             class="btn btn-primary">查询
                     </button>
@@ -107,7 +107,7 @@
                 <div class="form-group clearfix">
                     <div style="margin-left: -30px" class="col-md-5 pd-0">
                         <label for="selectTime" class="col-md-4 control-label">开始时间:</label>
-                        <div class="col-md-6">
+                        <div class="col-md-5" style="margin-left: -20px">
                             <div class="input-group">
                                         <span class="input-group-addon" id="sizing-addon2">
                                             <i class="fa fa-calendar" aria-hidden="true"></i>
@@ -120,9 +120,9 @@
                             <span class="error-msg"></span>
                         </div>
                     </div>
-                    <div style="margin-left: -150px" class="col-md-5 pd-0">
+                    <div style="margin-left: -220px" class="col-md-5 pd-0">
                         <label for="selectTime" class="col-md-4 control-label">结束时间:</label>
-                        <div class="col-md-6">
+                        <div class="col-md-5" style="margin-left: -20px">
                             <div class="input-group">
                                         <span class="input-group-addon" id="sizing-addon2">
                                             <i class="fa fa-calendar" aria-hidden="true"></i>
@@ -135,11 +135,47 @@
                         </div>
                     </div>
                     <!--修改-->
-                    <button id="button2"
-                            onclick="searchOnclick('myForm2','echartsMTBF2',option_line,'startDate2','endDate2','/getdate','/t')"
-                            style="margin-left: -20px" type="button"
-                            class="btn btn-primary">查询
-                    </button>
+                    <div class="col-md-3 ">
+                        <label style="margin-left: -170px;margin-top: 5px" class="col-md-4">舰队:</label>
+                        <div style="margin-left: -70px" class="col-md-6">
+                            <select class="selectpicker pull-right" id="select2" name="select2">
+                                <option value="205大队">205大队</option>
+                                <option value="21大队">21大队</option>
+                                <option value="14大队">14大队</option>
+                                <option value="登五支队">登五支队</option>
+                                <option value="护13支队">护13支队</option>
+                                <option value="护14支队">护14支队</option>
+                                <option value="护15支队">护15支队</option>
+                                <option value="护16支队">护16支队</option>
+                                <option value="驱3支队">驱3支队</option>
+                                <option value="作2支队">作2支队</option>
+                            </select><br>
+                        </div>
+                    </div>
+                    <!--修改-->
+                    <div class="col-md-3 ">
+                        <label style="margin-left: 730px;margin-top: -30px" class="col-md-4">舰队:</label>
+                        <div style="margin-left: 830px; margin-top: -35px;" class="col-md-6">
+                            <select class="selectpicker pull-right" id="select3" name="select3">
+                                <option value="205大队">205大队</option>
+                                <option value="21大队">21大队</option>
+                                <option value="14大队">14大队</option>
+                                <option value="登五支队">登五支队</option>
+                                <option value="护13支队">护13支队</option>
+                                <option value="护14支队">护14支队</option>
+                                <option value="护15支队">护15支队</option>
+                                <option value="护16支队">护16支队</option>
+                                <option value="驱3支队">驱3支队</option>
+                                <option value="作2支队">作2支队</option>
+                            </select><br>
+                        </div>
+                        <!--修改-->
+                        <button id="button2"
+                                onclick="searchOnclick('myForm2','echartsMTBF2',option_line,'startDate2','endDate2','/getdate','/t')"
+                                style="margin-left: 1000px;margin-top: -60px" type="button"
+                                class="btn btn-primary">查询
+                        </button>
+                    </div>
                 </div>
             </form>
             <!--为ECharts准备一个具备大小（宽高）的Dom--> <!--修改-->
@@ -150,6 +186,14 @@
 
 {% block js %}
     <script>
+        //重写 bootstrap-select宽度
+        $("#select2").selectpicker({
+            width: 150,
+        })
+        $("#select3").selectpicker({
+            width: 150,
+        })
+
         /*
                添加对话框：初始化时间选择 结束时间始终不大于开始时间和当前时间
                参数 = '开始时间和结束时间输入框id'
@@ -210,7 +254,7 @@
         // endDate：‘结束时间输入框id‘
         // postDataUrl：‘后台接受post时间&选项框内容url‘
         // chartDataUrl='后台发送图像加载数据url'
-        function searchOnclick(myFormId, echartId, option,startDate,endDate,postDataUrl, chartDataUrl) {
+        function searchOnclick(myFormId, echartId, option, startDate, endDate, postDataUrl) {
             //获取整个表单中数据  生成查询key-value数组
             var formDate = $("#" + myFormId).serializeArray();
             var formDates = []
@@ -229,7 +273,7 @@
                     data: formDate,
                 });
                 //从前台读取数据重新加载图像
-                load_data(echartId, option, chartDataUrl)
+                load_data(echartId, option, postDataUrl)
             }
         }
     </script>
@@ -540,6 +584,7 @@
                 });
             });
         }
+
         // 修改参数 初始化界面图像
         $(function () {
             load_data('echartsMTBF1', option_bar, '/t')

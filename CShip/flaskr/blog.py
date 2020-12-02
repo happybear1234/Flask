@@ -8,7 +8,7 @@ from flask import jsonify
 app = Flask(__name__)
 
 
-# 数据库测试
+# 发送图像加载数据
 @app.route('/t', methods=['GET', 'POST'])
 def t():
     res = []
@@ -17,7 +17,7 @@ def t():
     return json.dumps(res, ensure_ascii=False)
 
 
-# 表单测试
+# 接收post数据
 @app.route('/getdate', methods=['POST', 'GET'])
 def getdate():
     if request.method == "POST":
@@ -36,6 +36,8 @@ def dataurl():
         date2 = request.form.get('endDate1')
         date3 = request.form.get('select1')
         print('post', date1, date2, date3)
+        return redirect('/brigade')
+    if request.method =='GET':
         res = []
         for i in get_data():
             res.append({"name": i[0], "value": i[1]})
