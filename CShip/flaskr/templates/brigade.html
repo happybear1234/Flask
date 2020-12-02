@@ -1,68 +1,614 @@
 {% extends 'basic.html' %}
-
-{% block title %}舰队可用评估{% endblock %}
+<!--修改-->
+{% block title %}舰队可用度评估{% endblock %}
 
 {% block css %}
+    <style>
+        .cssMain {
+            border: 1px solid #f0f0f0;
+            margin-top: -20px;
+            padding: 0px 30px 30px 30px;
+            -webkit-box-shadow: 5px 10px 10px rgba(0, 0, 0, .05);
+            box-shadow: 5px 10px 10px rgba(0, 0, 0, .05);
+        }
+
+        .cssLabel {
+            margin: 20px auto;
+            border: 3px solid #f0f0f0;
+            padding: 40px 5px 5px 5px;
+            -webkit-box-shadow: 5px 10px 10px rgba(0, 0, 0, .05);
+            box-shadow: 5px 10px 10px rgba(0, 0, 0, .05);
+        }
+
+        .cssEcharts {
+            margin: 20px auto;
+            width: 95%;
+            height: 400px;
+        }
+
+        .pd-0 {
+            padding: 0 !important;
+        }
+    </style>
 {% endblock %}
 
 {% block content %}
-    <!--为ECharts准备一个具备大小（宽高）的Dom-->
-    {#    <div id="main" style="height:550px;border:1px solid #ccc;padding:10px;"></div>#}
-    <div id="main" style=" margin: 0 auto; width: 1300px;height:400px;"></div>
-    {#    <div id="main1" style=" margin: 0 auto; width: 1300px;height:400px;"></div>#}
-    {#    <div id="main2" style=" margin: 0 auto; width: 1300px;height:400px;"></div>#}
+    <div class="container cssMain">
+        <div class="cssLabel">
+            <!--修改-->
+            <label style="font-size: 20px;margin-top: -10px">单一舰队使用可用度</label>
+            <!--修改-->
+            <form id="myForm1" class="form-horizontal">
+                <div class="form-group clearfix">
+                    <div style="margin-left: -30px" class="col-md-5 pd-0">
+                        <label for="selectTime" class="col-md-4 control-label">开始时间:</label>
+                        <div class="col-md-6">
+                            <div class="input-group">
+                                        <span class="input-group-addon" id="sizing-addon2">
+                                            <i class="fa fa-calendar" aria-hidden="true"></i>
+                                        </span>
+                                <!--修改-->
+                                <input id="startDate1" name="startDate1" type="text" autocomplete="off"
+                                       class="form-control"
+                                       aria-describedby="startDate1" placeholder="请输入开始时间" data-provide="datepicker">
+                            </div>
+                            <span class="error-msg"></span>
+                        </div>
+                    </div>
+                    <div style="margin-left: -150px" class="col-md-5 pd-0">
+                        <label for="selectTime" class="col-md-4 control-label">结束时间:</label>
+                        <div class="col-md-6">
+                            <div class="input-group">
+                                        <span class="input-group-addon" id="sizing-addon2">
+                                            <i class="fa fa-calendar" aria-hidden="true"></i>
+                                        </span>
+                                <!--修改-->
+                                <input id="endDate1" name="endDate1" type="text" autocomplete="off"
+                                       class="form-control"
+                                       aria-describedby="endDate1" placeholder="请输入结束时间" data-provide="datepicker">
+                            </div>
+                        </div>
+                    </div>
+                    <!--修改-->
+                    <div class="col-md-3 ">
+                        <label style="margin-left: -70px;margin-top: 5px" class="col-md-4">舰队:</label>
+                        <div style="margin-left: 80px" class="col-md-6">
+                            <select class="selectpicker pull-right" id="select1" name="select1">
+                                <option value="205大队">205大队</option>
+                                <option value="21大队">21大队</option>
+                                <option value="14大队">14大队</option>
+                                <option value="登五支队">登五支队</option>
+                                <option value="护13支队">护13支队</option>
+                                <option value="护14支队">护14支队</option>
+                                <option value="护15支队">护15支队</option>
+                                <option value="护16支队">护16支队</option>
+                                <option value="驱3支队">驱3支队</option>
+                                <option value="作2支队">作2支队</option>
+                            </select><br>
+                        </div>
+                    </div>
+                    <!--修改-->
+                    <button id="button1"
+                            onclick="searchOnclick('myForm1','echartsBrigade1',option_line,'startDate1','endDate1','/getdate','/t')"
+                            style="margin-left: -20px" type="button"
+                            class="btn btn-primary">查询
+                    </button>
+                </div>
+            </form>
+            <!--为ECharts准备一个具备大小（宽高）的Dom--> <!--修改-->
+            <div id="echartsBrigade1" class="cssEcharts"></div>
+        </div>
+        <div class="cssLabel">
+
+            <!--修改-->
+            <label style="font-size: 20px;margin-top: -10px">所有舰队使用可用度</label>
+            <!--修改-->
+            <form id="myForm2" class="form-horizontal">
+                <div class="form-group clearfix">
+                    <div style="margin-left: -30px" class="col-md-5 pd-0">
+                        <label for="selectTime" class="col-md-4 control-label">开始时间:</label>
+                        <div class="col-md-6">
+                            <div class="input-group">
+                                        <span class="input-group-addon" id="sizing-addon2">
+                                            <i class="fa fa-calendar" aria-hidden="true"></i>
+                                        </span>
+                                <!--修改-->
+                                <input id="startDate2" name="startDate2" type="text" autocomplete="off"
+                                       class="form-control"
+                                       aria-describedby="startDate2" placeholder="请输入开始时间" data-provide="datepicker">
+                            </div>
+                            <span class="error-msg"></span>
+                        </div>
+                    </div>
+                    <div style="margin-left: -150px" class="col-md-5 pd-0">
+                        <label for="selectTime" class="col-md-4 control-label">结束时间:</label>
+                        <div class="col-md-6">
+                            <div class="input-group">
+                                        <span class="input-group-addon" id="sizing-addon2">
+                                            <i class="fa fa-calendar" aria-hidden="true"></i>
+                                        </span>
+                                <!--修改-->
+                                <input id="endDate2" name="endDate2" type="text" autocomplete="off"
+                                       class="form-control"
+                                       aria-describedby="endDate2" placeholder="请输入结束时间" data-provide="datepicker">
+                            </div>
+                        </div>
+                    </div>
+                    <!--修改-->
+                    <button id="button2"
+                            onclick="searchOnclick('myForm2','echartsBrigade2',option_line,'startDate2','endDate2','/getdate','/t')"
+                            style="margin-left: -20px" type="button"
+                            class="btn btn-primary">查询
+                    </button>
+                </div>
+            </form>
+            <!--为ECharts准备一个具备大小（宽高）的Dom--> <!--修改-->
+            <div id="echartsBrigade2" class="cssEcharts"></div>
+        </div>
+        <div class="cssLabel">
+            <!--修改-->
+            <label style="font-size: 20px;margin-top: -10px">单一舰队年度使用可用度</label>
+            <!--修改-->
+            <form id="myForm3" class="form-horizontal">
+                <div class="form-group clearfix">
+                    <div style="margin-left: -30px" class="col-md-5 pd-0">
+                        <label for="selectTime" class="col-md-4 control-label">开始时间:</label>
+                        <div class="col-md-6">
+                            <div class="input-group">
+                                        <span class="input-group-addon" id="sizing-addon2">
+                                            <i class="fa fa-calendar" aria-hidden="true"></i>
+                                        </span>
+                                <!--修改-->
+                                <input id="startDate3" name="startDate3" type="text" autocomplete="off"
+                                       class="form-control"
+                                       aria-describedby="startDate3" placeholder="请输入开始时间" data-provide="datepicker">
+                            </div>
+                            <span class="error-msg"></span>
+                        </div>
+                    </div>
+                    <div style="margin-left: -150px" class="col-md-5 pd-0">
+                        <label for="selectTime" class="col-md-4 control-label">结束时间:</label>
+                        <div class="col-md-6">
+                            <div class="input-group">
+                                        <span class="input-group-addon" id="sizing-addon2">
+                                            <i class="fa fa-calendar" aria-hidden="true"></i>
+                                        </span>
+                                <!--修改-->
+                                <input id="endDate3" name="endDate3" type="text" autocomplete="off"
+                                       class="form-control"
+                                       aria-describedby="endDate3" placeholder="请输入结束时间" data-provide="datepicker">
+                            </div>
+                        </div>
+                    </div>
+                    <!--修改-->
+                    <div class="col-md-3 ">
+                        <label style="margin-left: -70px;margin-top: 5px" class="col-md-4">舰队:</label>
+                        <div style="margin-left: 80px" class="col-md-6">
+                            <select class="selectpicker pull-right" id="select1" name="select1">
+                                <option value="205大队">205大队</option>
+                                <option value="21大队">21大队</option>
+                                <option value="14大队">14大队</option>
+                                <option value="登五支队">登五支队</option>
+                                <option value="护13支队">护13支队</option>
+                                <option value="护14支队">护14支队</option>
+                                <option value="护15支队">护15支队</option>
+                                <option value="护16支队">护16支队</option>
+                                <option value="驱3支队">驱3支队</option>
+                                <option value="作2支队">作2支队</option>
+                            </select><br>
+                        </div>
+                    </div>
+                    <!--修改-->
+                    <button id="button3"
+                            onclick="searchOnclick('myForm3','echartsBrigade3',option_bar,'startDate3','endDate3','/getdate','/t')"
+                            style="margin-left: -20px" type="button"
+                            class="btn btn-primary">查询
+                    </button>
+                </div>
+            </form>
+            <!--为ECharts准备一个具备大小（宽高）的Dom--> <!--修改-->
+            <div id="echartsBrigade3" class="cssEcharts"></div>
+        </div>
+    </div>
 {% endblock %}
 
 {% block js %}
-    <script type="text/javascript">
-var myChart = echarts.init(document.getElementById('main'));
-var data = {"categor": ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"],
-            "dat": [5, 20, 36, 10, 10, 20]}
-{#var data = {"衬衫":5,"羊毛衫":20,"雪纺衫":36,"裤子":10,"高跟鞋":10,"袜子":20}#}
+    <script>
+        /*
+               添加对话框：初始化时间选择 结束时间始终不大于开始时间和当前时间
+               参数 = '开始时间和结束时间输入框id'
+                */
+        function DatePicker(beginSelector, endSelector) {
+            // 仅选择日期
+            $(beginSelector).datepicker(
+                {
+                    language: "zh-CN",
+                    autoclose: true,
+                    startView: 0,
+                    format: "yyyy-mm-dd",
+                    clearBtn: true,
+                    todayBtn: false,
+                    todayHighlight: true,
+                    endDate: new Date()
+                }).on('changeDate', function (ev) {
+                if (ev.date) {
+                    $(endSelector).datepicker('setStartDate', new Date(ev.date.valueOf()))
+                } else {
+                    $(endSelector).datepicker('setStartDate', null);
+                }
+            })
 
-{#//类别数组（实际用来盛放X轴坐标值）#}
-{#var x_names = [];#}
-{#var y_datas = [];#}
-{#//挨个取出类别并填入类别数组#}
-{# $.each(data, function (index, item) {#}
-{#                x_names.push(item);#}
-{#                y_datas.push(item);#}
-{#            });#}
+            $(endSelector).datepicker(
+                {
+                    language: "zh-CN",
+                    autoclose: true,
+                    startView: 0,
+                    format: "yyyy-mm-dd",
+                    clearBtn: true,
+                    todayBtn: false,
+                    todayHighlight: true,
+                    endDate: new Date()
+                }).on('changeDate', function (ev) {
+                if (ev.date) {
+                    $(beginSelector).datepicker('setEndDate', new Date(ev.date.valueOf()))
+                } else {
+                    $(beginSelector).datepicker('setEndDate', new Date());
+                }
 
-// 显示标题，图例和空的坐标轴
-myChart.setOption({
-    title: {
-        text: '异步数据加载示例'
-    },
-    tooltip: {},
-    legend: {
-        data:['销量']
-    },
-    xAxis: {
-        data: []
-    },
-    yAxis: {},
-    series: [{
-        name: '销量',
-        type: 'bar',
-        data: []
-    }]
-});
-myChart.showLoading();
-// 异步加载数据
-$.get('calculate').done(function () {
-    myChart.hideLoading();
-    // 填入数据
-    myChart.setOption({
-        xAxis: {
-            data: data.categor //不要用categore，data命名
-        },
-        series: [{
-            // 根据名字对应到相应的系列
-            name: '销量',
-            data: data.dat
-        }]
-    });
-});
+            })
+        }
+
+        $(function () {
+            DatePicker("#startDate1", "#endDate1");
+            DatePicker("#startDate2", "#endDate2");
+            DatePicker("#startDate3", "#endDate3");
+        });
+    </script>
+    <script>
+        //点击查询 获取当前表单数据
+        // 参数说明
+        // myFormId：'表单id'
+        // echartId:'插入图像div的id'
+        // option：option_bar/option_line
+        // startDate:‘开始时间输入框id‘
+        // endDate：‘结束时间输入框id‘
+        // postDataUrl：‘后台接受post时间&选项框内容url‘
+        // chartDataUrl='后台发送图像加载数据url'
+        function searchOnclick(myFormId, echartId, option,startDate,endDate,postDataUrl, chartDataUrl) {
+            //获取整个表单中数据  生成查询key-value数组
+            var formDate = $("#" + myFormId).serializeArray();
+            var formDates = []
+            $.each(formDate, function (index, item) {
+                formDates[item.name] = item.value;
+            })
+            // 判断 时间格式
+            if (formDates[startDate] == '' || formDates[endDate] == '') {
+                alert('请选择时间')
+            } else {
+                //格式正确 发送时间和选项内容到前台
+                $.ajax({
+                    type: "POST",
+                    dataType: "text",
+                    url: postDataUrl,
+                    data: formDate,
+                });
+                //从前台读取数据重新加载图像
+                load_data(echartId, option, chartDataUrl)
+            }
+        }
+    </script>
+    <script>
+        // 柱状图样式
+        var option_bar = {
+            backgroundColor: '#00265f',
+            title: {
+                y: "4%",
+                textStyle: {
+                    color: '#fff',
+                    fontSize: '22'
+                },
+                subtextStyle: {
+                    color: '#90979c',
+                    fontSize: '16',
+
+                },
+            },
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {
+                    type: 'shadow'
+                }
+            },
+            grid: {
+                top: '15%',
+                right: '3%',
+                left: '5%',
+                bottom: '12%'
+            },
+            legend: {
+                data: ['可用度'],
+                show: false
+            },
+            xAxis: {
+                data: [],
+                axisLine: {
+                    lineStyle: {
+                        color: 'rgba(255,255,255,0.12)'
+                    },
+                },
+                axisLabel: {
+                    margin: 10,
+                    color: '#e2e9ff',
+                    textStyle: {
+                        fontSize: 14
+                    },
+                },
+            },
+            yAxis: {
+                axisLabel: {
+                    formatter: '{value}',
+                    color: '#e2e9ff',
+                },
+                axisLine: {
+                    show: false,
+                    lineStyle: {
+                        color: 'rgba(255,255,255,1)'
+                    }
+                },
+                splitLine: {
+                    lineStyle: {
+                        color: 'rgba(255,255,255,0.12)'
+                    }
+                }
+            },
+            series: [{
+                name: '可用度',
+                type: 'bar',
+                data: [],
+                barWidth: '20px',
+                itemStyle: {
+                    normal: {
+                        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                            offset: 0,
+                            color: 'rgba(0,244,255,1)' // 0% 处的颜色
+                        }, {
+                            offset: 1,
+                            color: 'rgba(0,77,167,1)' // 100% 处的颜色
+                        }], false),
+                        barBorderRadius: [30, 30, 30, 30],
+                        shadowColor: 'rgba(0,160,221,1)',
+                        shadowBlur: 4,
+                    }
+                },
+                label: {
+                    normal: {
+                        show: true,
+                        lineHeight: 30,
+                        width: 80,
+                        height: 30,
+                        backgroundColor: 'rgba(0,160,221,0.1)',
+                        borderRadius: 200,
+                        position: ['-8', '-60'],
+                        distance: 1,
+                        formatter: [
+                            '    {d|●}',
+                            ' {a|{c}}     \n',
+                            '    {b|}'
+                        ].join(','),
+                        rich: {
+                            d: {
+                                color: '#3CDDCF',
+                            },
+                            a: {
+                                color: '#fff',
+                                align: 'center',
+                            },
+                            b: {
+                                width: 1,
+                                height: 30,
+                                borderWidth: 1,
+                                borderColor: '#234e6c',
+                                align: 'left'
+                            },
+                        }
+                    }
+                }
+            }]
+        };
+    </script>
+    <script>
+        // 折线图样式
+        var option_line = {
+            backgroundColor: '#080b30',
+            title: {
+                y: "4%",
+                textStyle: {
+                    color: '#fff',
+                    fontSize: '22'
+                }
+            },
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {
+                    lineStyle: {
+                        color: {
+                            type: 'linear',
+                            x: 0,
+                            y: 0,
+                            x2: 0,
+                            y2: 1,
+                            colorStops: [{
+                                offset: 0,
+                                color: 'rgba(0, 255, 233,0)'
+                            }, {
+                                offset: 0.5,
+                                color: 'rgba(255, 255, 255,1)',
+                            }, {
+                                offset: 1,
+                                color: 'rgba(0, 255, 233,0)'
+                            }],
+                            global: false
+                        }
+                    }
+                }
+            },
+            legend: {
+                data: ['可用度'],
+                show: false
+            },
+            grid: {
+                top: '15%',
+                right: '3%',
+                left: '5%',
+                bottom: '12%'
+            },
+            xAxis: {
+                data: [],
+                axisLine: {
+                    show: true,
+                    lineStyle: {
+                        color: '#9581F5'
+                    },
+                },
+                splitArea: {
+                    // show: true,
+                    color: '#f00',
+                    lineStyle: {
+                        color: '#f00'
+                    },
+                },
+                axisLabel: {
+                    color: '#fff'
+                },
+                splitLine: {
+                    show: false
+                },
+                boundaryGap: false,
+                data: ['8：00', '9:00', '10:00', '11:00', '12:00', '13:00'],
+            },
+            yAxis: {
+                min: 0,
+                // max: 140,
+                splitNumber: 4,
+                splitLine: {
+                    show: true,
+                    lineStyle: {
+                        color: 'rgba(255,255,255,0.1)'
+                    }
+                },
+                axisLine: {
+                    show: true,
+                    lineStyle: {
+                        color: '#9581F5'
+                    },
+                },
+                axisLabel: {
+                    show: true,
+                    margin: 20,
+                    textStyle: {
+                        color: '#d1e6eb',
+                    },
+                },
+                axisTick: {
+                    show: true,
+                },
+            },
+            series: [{
+                name: '可用度',
+                type: 'line',
+                data: [],
+                // smooth: true, //是否平滑
+                showAllSymbol: true,
+                // symbol: 'image://./static/images/guang-circle.png',
+                symbol: 'circle',
+                symbolSize: 25,
+                lineStyle: {
+                    normal: {
+                        color: "#6c50f3",
+                        shadowColor: 'rgba(0, 0, 0, .3)',
+                        shadowBlur: 0,
+                        shadowOffsetY: 5,
+                        shadowOffsetX: 5,
+                    },
+                },
+                label: {
+                    show: true,
+                    position: 'top',
+                    textStyle: {
+                        color: '#fff',
+                    }
+                },
+                itemStyle: {
+                    color: "#6c50f3",
+                    borderColor: "#fff",
+                    borderWidth: 3,
+                    shadowColor: 'rgba(0, 0, 0, .3)',
+                    shadowBlur: 0,
+                    shadowOffsetY: 2,
+                    shadowOffsetX: 2,
+                },
+                tooltip: {
+                    show: true
+                },
+                areaStyle: {
+                    normal: {
+                        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                            offset: 0,
+                            color: 'rgba(108,80,243,0.3)'
+                        },
+                            {
+                                offset: 1,
+                                color: 'rgba(108,80,243,0)'
+                            }
+                        ], false),
+                        shadowColor: 'rgba(108,80,243, 0.9)',
+                        shadowBlur: 20
+                    }
+                },
+            }]
+        };
+    </script>
+    <script>
+        // 函数封装 异步加载数据
+        // 参数说明
+        // id='图像位置div的id'
+        // option=option_bar/option_line
+        // url='/url',x_name=指定图x轴数组，y_name=指定图y轴数组
+        function load_data(id, option, url,) {
+            var myChart = echarts.init(document.getElementById(id));
+            var x_name = []
+            var y_name = []
+            myChart.setOption(option)
+            myChart.showLoading();
+            $.get(url).done(function (data) {
+                myChart.hideLoading();
+                //遍历，分别取出key，value 字段名
+                data = $.parseJSON(data)
+                $.each(data, function (index, item) {
+                    x_name.push(item.name);
+                    y_name.push(item.value);
+                });
+                // 填入数据
+                myChart.setOption({
+                    title: {
+                        show: false,
+                    },
+                    xAxis: {
+                        data: x_name //不要用categore，data命名
+                    },
+                    series: [{
+                        // 根据名字对应到相应的系列 name必须与图像样式里legend的name一样
+                        name: '可用度',
+                        data: y_name
+                    }]
+                });
+            });
+        }
+        // 修改参数 初始化界面图像
+        $(function () {
+            load_data('echartsBrigade1', option_bar, '/t')
+            load_data('echartsBrigade2', option_bar, '/t')
+            load_data('echartsBrigade3', option_line, '/t')
+        });
     </script>
 {% endblock %}

@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="{{ url_for('static',filename='plugin/font-awesome-4.7.0/css/font-awesome.min.css') }}">
     <link rel="stylesheet"
           href="{{ url_for('static',filename='plugin/bootstrap-select/css/bootstrap-select.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='plugin/bootstrap-datepicker/css/bootstrap-datepicker.min.css') }}">
     <style>
         .navbar-default {
             border-radius: 0;
@@ -63,6 +64,8 @@
 <script src="{{ url_for('static',filename='plugin/bootstrap-3.3.7-dist/js/bootstrap.min.js') }}"></script>
 <script src="{{ url_for('static',filename='plugin/bootstrap-select/js/bootstrap-select.min.js') }}"></script>
 <script src="{{ url_for('static',filename='plugin/echarts.min.js') }}"></script>
+<script src="{{ url_for('static',filename='plugin/bootstrap-datepicker/js/bootstrap-datepicker.min.js') }}"></script>
+<script src="{{ url_for('static',filename='plugin/bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min.js') }}"></script>
 {% block js %}{% endblock %}
 </body>
 <!--激活响应-->
