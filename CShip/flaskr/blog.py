@@ -11,10 +11,11 @@ app = Flask(__name__)
 # 发送图像加载数据
 @app.route('/t', methods=['GET', 'POST'])
 def t():
-    res = []
-    for i in get_data():
-        res.append({"name": i[0], "value": i[1]})
-    return json.dumps(res, ensure_ascii=False)
+    if request.method == 'GET':
+        res = []
+        for i in get_data():
+            res.append({"name": i[0], "value": i[1]})
+        return json.dumps(res, ensure_ascii=False)
 
 
 # 接收post数据
@@ -29,15 +30,80 @@ def getdate():
 
 
 # 整体测试
-@app.route('/dataurl', methods=['POST', 'GET'])
-def dataurl():
+# 测试一： 舰队、试验、马氏
+@app.route('/dataurl1', methods=['POST', 'GET'])
+def dataurl1():
     if request.method == "POST":
         date1 = request.form.get('startDate1')
         date2 = request.form.get('endDate1')
         date3 = request.form.get('select1')
-        print('post', date1, date2, date3)
+        print('post1', date1, date2, date3)
+        return jsonify({"success": 200, "date1": date1, "date2": date2})
+    if request.method == 'GET':
+        res = []
+        for i in get_data():
+            res.append({"name": i[0], "value": i[1]})
+        return json.dumps(res, ensure_ascii=False)
+
+
+
+
+
+@app.route('/dataurl2', methods=['POST', 'GET'])
+def dataurl2():
+    if request.method == "POST":
+        date1 = request.form.get('startDate2')
+        date2 = request.form.get('endDate2')
+        print('post2', date1, date2)
         return redirect('/brigade')
-    if request.method =='GET':
+    if request.method == 'GET':
+        res = []
+        for i in get_data():
+            res.append({"name": i[0], "value": i[1]})
+        return json.dumps(res, ensure_ascii=False)
+
+
+@app.route('/dataurl3', methods=['POST', 'GET'])
+def dataurl3():
+    if request.method == "POST":
+        date1 = request.form.get('startDate3')
+        date2 = request.form.get('endDate3')
+        date3 = request.form.get('select3')
+        print('post3', date1, date2, date3)
+        return redirect('/brigade')
+    if request.method == 'GET':
+        res = []
+        for i in get_data():
+            res.append({"name": i[0], "value": i[1]})
+        return json.dumps(res, ensure_ascii=False)
+
+
+# 测试二： MTBF、MTTR、MDT
+@app.route('/dataurl2_1', methods=['POST', 'GET'])
+def dataurl2_1():
+    if request.method == "POST":
+        date1 = request.form.get('startDate1')
+        date2 = request.form.get('endDate1')
+        date3 = request.form.get('select1')
+        print('post1', date1, date2, date3)
+        return redirect('/brigade')
+    if request.method == 'GET':
+        res = []
+        for i in get_data():
+            res.append({"name": i[0], "value": i[1]})
+        return json.dumps(res, ensure_ascii=False)
+
+
+@app.route('/dataurl2_2', methods=['POST', 'GET'])
+def dataurl2_2():
+    if request.method == "POST":
+        date1 = request.form.get('startDate2')
+        date2 = request.form.get('endDate2')
+        date3 = request.form.get('select2_1')
+        date4 = request.form.get('select2_2')
+        print('post2', date1, date2, date3, date4)
+        return redirect('/brigade')
+    if request.method == 'GET':
         res = []
         for i in get_data():
             res.append({"name": i[0], "value": i[1]})

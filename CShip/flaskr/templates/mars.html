@@ -70,9 +70,27 @@
                         </div>
                     </div>
                     <!--修改-->
+                    <div class="col-md-3 ">
+                        <label style="margin-left: -70px;margin-top: 5px" class="col-md-4">舰队:</label>
+                        <div style="margin-left: 80px" class="col-md-6">
+                            <select class="selectpicker pull-right" id="select1" name="select1">
+                                <option value="205大队">205大队</option>
+                                <option value="21大队">21大队</option>
+                                <option value="14大队">14大队</option>
+                                <option value="登五支队">登五支队</option>
+                                <option value="护13支队">护13支队</option>
+                                <option value="护14支队">护14支队</option>
+                                <option value="护15支队">护15支队</option>
+                                <option value="护16支队">护16支队</option>
+                                <option value="驱3支队">驱3支队</option>
+                                <option value="作2支队">作2支队</option>
+                            </select><br>
+                        </div>
+                    </div>
+                    <!--修改-->
                     <button id="button1"
-                            onclick="searchOnclick('myForm1','echartsMars1',option_line,'startDate1','endDate1','/getdate','/t')"
-                            style="margin-left: 260px" type="button"
+                            onclick="searchOnclick('myForm1','echartsMars1',option_line,'startDate1','endDate1','/dataurl1')"
+                            style="margin-left: -20px" type="button"
                             class="btn btn-primary">查询
                     </button>
                 </div>
@@ -118,7 +136,7 @@
                     </div>
                     <!--修改-->
                     <button id="button2"
-                            onclick="searchOnclick('myForm2','echartsMars2',option_line,'startDate2','endDate2','/getdate','/t')"
+                            onclick="searchOnclick('myForm2','echartsMars2',option_line,'startDate2','endDate2','/dataurl2')"
                             style="margin-left: 260px" type="button"
                             class="btn btn-primary">查询
                     </button>
@@ -166,7 +184,7 @@
                     <div class="col-md-3 ">
                         <label style="margin-left: -70px;margin-top: 5px" class="col-md-4">舰队:</label>
                         <div style="margin-left: 80px" class="col-md-6">
-                            <select class="selectpicker pull-right" id="select1" name="select1">
+                            <select class="selectpicker pull-right" id="select3" name="select3">
                                 <option value="205大队">205大队</option>
                                 <option value="21大队">21大队</option>
                                 <option value="14大队">14大队</option>
@@ -182,7 +200,7 @@
                     </div>
                     <!--修改-->
                     <button id="button3"
-                            onclick="searchOnclick('myForm3','echartsMars3',option_bar,'startDate3','endDate3','/getdate','/t')"
+                            onclick="searchOnclick('myForm3','echartsMars3',option_bar,'startDate3','endDate3','/dataurl3')"
                             style="margin-left: -20px" type="button"
                             class="btn btn-primary">查询
                     </button>
@@ -240,10 +258,57 @@
             })
         }
 
+        // 只展示年份
+        function showYearDatePicker(beginSelector, endSelector) {
+            // 仅选择日期
+            $(beginSelector).datepicker(
+                {
+                    startView: 2,
+                    maxViewMode: 2,
+                    minViewMode: 2,
+                    language: "zh-CN",
+                    autoclose: true,
+                    startView: 0,
+                    format: "yyyy",
+                    clearBtn: true,
+                    todayBtn: false,
+                    todayHighlight: true,
+                    endDate: new Date()
+                }).on('changeDate', function (ev) {
+                if (ev.date) {
+                    $(endSelector).datepicker('setStartDate', new Date(ev.date.valueOf()))
+                } else {
+                    $(endSelector).datepicker('setStartDate', null);
+                }
+            })
+
+            $(endSelector).datepicker(
+                {
+                    startView: 2,
+                    maxViewMode: 2,
+                    minViewMode: 2,
+                    language: "zh-CN",
+                    autoclose: true,
+                    startView: 0,
+                    format: "yyyy",
+                    clearBtn: true,
+                    todayBtn: false,
+                    todayHighlight: true,
+                    endDate: new Date()
+                }).on('changeDate', function (ev) {
+                if (ev.date) {
+                    $(beginSelector).datepicker('setEndDate', new Date(ev.date.valueOf()))
+                } else {
+                    $(beginSelector).datepicker('setEndDate', new Date());
+                }
+
+            })
+        }
+
         $(function () {
             DatePicker("#startDate1", "#endDate1");
             DatePicker("#startDate2", "#endDate2");
-            DatePicker("#startDate3", "#endDate3");
+            showYearDatePicker("#startDate3", "#endDate3");
         });
     </script>
     <script>
@@ -256,7 +321,8 @@
         // endDate：‘结束时间输入框id‘
         // postDataUrl：‘后台接受post时间&选项框内容url‘
         // chartDataUrl='后台发送图像加载数据url'
-        function searchOnclick(myFormId, echartId, option,startDate,endDate,postDataUrl, chartDataUrl) {
+        // DataUrl:'前台post和后台发送数据写为同一个函数'                   <!--修改-->
+        function searchOnclick(myFormId, echartId, option, startDate, endDate, DataUrl) {
             //获取整个表单中数据  生成查询key-value数组
             var formDate = $("#" + myFormId).serializeArray();
             var formDates = []
@@ -271,11 +337,11 @@
                 $.ajax({
                     type: "POST",
                     dataType: "text",
-                    url: postDataUrl,
+                    url: DataUrl,
                     data: formDate,
                 });
                 //从前台读取数据重新加载图像
-                load_data(echartId, option, chartDataUrl)
+                load_data(echartId, option, DataUrl)
             }
         }
     </script>
@@ -564,6 +630,7 @@
             myChart.showLoading();
             $.get(url).done(function (data) {
                 myChart.hideLoading();
+                console.log(data)
                 //遍历，分别取出key，value 字段名
                 data = $.parseJSON(data)
                 $.each(data, function (index, item) {
@@ -586,6 +653,7 @@
                 });
             });
         }
+
         // 修改参数 初始化界面图像
         $(function () {
             load_data('echartsMars1', option_bar, '/t')
