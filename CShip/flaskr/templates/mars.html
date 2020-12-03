@@ -107,7 +107,7 @@
                     <div class="col-md-3 ">
                         <label style="margin-left: -70px;margin-top: 5px" class="col-md-4">系统:</label>
                         <div style="margin-left: 80px" class="col-md-6">
-                            <select class="selectpicker pull-right" id="select1" name="select1">
+                            <select class="selectpicker pull-right" id="select1_1" name="select1_1">
                                 <option value="6管30mm舰炮系统">6管30mm舰炮系统</option>
                                 <option value="630系统">630系统</option>
                                 <option value="H/PJ26型单管76mm舰炮系统">H/PJ26型单管76mm舰炮系统</option>
@@ -143,8 +143,41 @@
                         </div>
                     </div>
                     <!--修改-->
+                    <div class="col-md-3 ">
+                        <div style="margin-left: 80px" class="col-md-6">
+                            <select class="selectpicker pull-right" id="select1_2" name="select1_2" title="舰队">
+                                <option value="205大队">205大队</option>
+                                <option value="21大队">21大队</option>
+                                <option value="14大队">14大队</option>
+                                <option value="登五支队">登五支队</option>
+                                <option value="护13支队">护13支队</option>
+                                <option value="护14支队">护14支队</option>
+                                <option value="护15支队">护15支队</option>
+                                <option value="护16支队">护16支队</option>
+                                <option value="驱3支队">驱3支队</option>
+                                <option value="作2支队">作2支队</option>
+                            </select><br>
+                        </div>
+                    </div>
+                    <!--修改-->
+                    <div class="col-md-3 ">
+                        <div style="margin-left: 80px" class="col-md-6">
+                            <select class="selectpicker pull-right" id="select1_3" name="select1_3" title="试验">
+                                <option value="4A系泊航行">4A系泊航行</option>
+                                <option value="4A陆试">4A陆试</option>
+                                <option value="54系泊航行">54系泊航行</option>
+                                <option value="55陆试">55陆试</option>
+                                <option value="052陆试">052陆试</option>
+                                <option value="2D陆试">2D陆试</option>
+                                <option value="2D系泊航行">2D系泊航行</option>
+                                <option value="6A系泊航行">6A系泊航行</option>
+                                <option value="172系泊航行">172系泊航行</option>
+                            </select><br>
+                        </div>
+                    </div>
+                    <!--修改-->
                     <button id="button1"
-                            onclick="searchOnclick('myForm1','echartsMars1',option_line,'startDate1','endDate1','/dataurl1')"
+                            onclick="searchOnclick('myForm1','echartsMars1',option_bar,'startDate1','endDate1','/dataurl1')"
                             style="margin-left: -20px" type="button"
                             class="btn btn-primary">查询
                     </button>
@@ -191,7 +224,7 @@
                     </div>
                     <!--修改-->
                     <button id="button2"
-                            onclick="searchOnclick('myForm2','echartsMars2',option_line,'startDate2','endDate2','/dataurl2')"
+                            onclick="searchOnclick('myForm2','echartsMars2',option_bar,'startDate2','endDate2','/dataurl2')"
                             style="margin-left: 260px" type="button"
                             class="btn btn-primary">查询
                     </button>
@@ -276,7 +309,7 @@
                     </div>
                     <!--修改-->
                     <button id="button3"
-                            onclick="searchOnclick('myForm3','echartsMars3',option_bar,'startDate3','endDate3','/dataurl3')"
+                            onclick="searchOnclick('myForm3','echartsMars3',option_line,'startDate3','endDate3','/dataurl3')"
                             style="margin-left: -20px" type="button"
                             class="btn btn-primary">查询
                     </button>
@@ -290,6 +323,14 @@
 
 {% block js %}
     <script>
+        //重写 bootstrap-select宽度  <!--修改-->
+        $("#select1_2").selectpicker({
+            width: 70,
+        })
+        $("#select1_3").selectpicker({
+            width: 70,
+        })
+
         /*
                添加对话框：初始化时间选择 结束时间始终不大于开始时间和当前时间
                参数 = '开始时间和结束时间输入框id'
@@ -381,8 +422,8 @@
         }
 
         $(function () {
-            DatePicker("#startDate1", "#endDate1");
-            DatePicker("#startDate2", "#endDate2");
+            showYearDatePicker("#startDate1", "#endDate1");
+            showYearDatePicker("#startDate2", "#endDate2");
             showYearDatePicker("#startDate3", "#endDate3");
         });
     </script>
@@ -439,7 +480,8 @@
                     show: true,
                     xAxisIndex: [0],
                     start: 1,
-                    end: 35
+                    end: 35,
+                    bottom: '-5',
                 },
                 {
                     type: 'inside',
@@ -573,7 +615,8 @@
                     show: true,
                     xAxisIndex: [0],
                     start: 1,
-                    end: 35
+                    end: 35,
+                    bottom: '-5',
                 },
                 {
                     type: 'inside',
@@ -641,7 +684,8 @@
                     },
                 },
                 axisLabel: {
-                    color: '#fff'
+                    color: '#fff',
+                    fontSize: 14
                 },
                 splitLine: {
                     show: false
@@ -684,7 +728,7 @@
                 showAllSymbol: true,
                 // symbol: 'image://./static/images/guang-circle.png',
                 symbol: 'circle',
-                symbolSize: 25,
+                symbolSize: 12,
                 lineStyle: {
                     normal: {
                         color: "#6c50f3",

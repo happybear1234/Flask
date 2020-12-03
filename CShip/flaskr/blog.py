@@ -7,6 +7,9 @@ from flask import jsonify
 
 app = Flask(__name__)
 
+@app.route('/echart')
+def echartTest():
+    return render_template('echartTest.html')
 
 # 发送图像加载数据
 @app.route('/t', methods=['GET', 'POST'])

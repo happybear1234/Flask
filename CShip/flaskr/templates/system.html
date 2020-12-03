@@ -144,7 +144,7 @@
                     </div>
                     <!--修改-->
                     <button id="button1"
-                            onclick="searchOnclick('myForm1','echartsSystem1',option_line,'startDate1','endDate1','/dataurl1')"
+                            onclick="searchOnclick('myForm1','echartsSystem1',option_bar,'startDate1','endDate1','/dataurl1')"
                             style="margin-left: -20px" type="button"
                             class="btn btn-primary">查询
                     </button>
@@ -191,7 +191,7 @@
                     </div>
                     <!--修改-->
                     <button id="button2"
-                            onclick="searchOnclick('myForm2','echartsSystem2',option_line,'startDate2','endDate2','/dataurl2')"
+                            onclick="searchOnclick('myForm2','echartsSystem2',option_bar,'startDate2','endDate2','/dataurl2')"
                             style="margin-left: 260px" type="button"
                             class="btn btn-primary">查询
                     </button>
@@ -276,7 +276,7 @@
                     </div>
                     <!--修改-->
                     <button id="button3"
-                            onclick="searchOnclick('myForm3','echartsSystem3',option_bar,'startDate3','endDate3','/dataurl3')"
+                            onclick="searchOnclick('myForm3','echartsSystem3',option_line,'startDate3','endDate3','/dataurl3')"
                             style="margin-left: -20px" type="button"
                             class="btn btn-primary">查询
                     </button>
@@ -381,8 +381,8 @@
         }
 
         $(function () {
-            DatePicker("#startDate1", "#endDate1");
-            DatePicker("#startDate2", "#endDate2");
+            showYearDatePicker("#startDate1", "#endDate1");
+            showYearDatePicker("#startDate2", "#endDate2");
             showYearDatePicker("#startDate3", "#endDate3");
         });
     </script>
@@ -440,7 +440,8 @@
                     show: true,
                     xAxisIndex: [0],
                     start: 1,
-                    end: 35
+                    end: 35,
+                    bottom:'-5',
                 },
                 {
                     type: 'inside',
@@ -574,7 +575,8 @@
                     show: true,
                     xAxisIndex: [0],
                     start: 1,
-                    end: 35
+                    end: 35,
+                    bottom:'-5',
                 },
                 {
                     type: 'inside',
@@ -642,7 +644,8 @@
                     },
                 },
                 axisLabel: {
-                    color: '#fff'
+                    color: '#fff',
+                    fontSize:14
                 },
                 splitLine: {
                     show: false
@@ -685,7 +688,7 @@
                 showAllSymbol: true,
                 // symbol: 'image://./static/images/guang-circle.png',
                 symbol: 'circle',
-                symbolSize: 25,
+                symbolSize: 12,
                 lineStyle: {
                     normal: {
                         color: "#6c50f3",
