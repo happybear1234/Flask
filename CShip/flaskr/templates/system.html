@@ -1,6 +1,6 @@
 {% extends 'basic.html' %}
 <!--修改-->
-{% block title %}MDT评估{% endblock %}
+{% block title %}系统可用度评估{% endblock %}
 
 {% block css %}
     <style>
@@ -70,7 +70,7 @@
     <div class="container cssMain">
         <div class="cssLabel">
             <!--修改-->
-            <label style="font-size: 20px;margin-top: -10px">单一系统所有设备MDT</label>
+            <label style="font-size: 20px;margin-top: -10px">单一系统使用可用度</label>
             <!--修改-->
             <form id="myForm1" class="form-horizontal">
                 <div class="form-group clearfix">
@@ -144,25 +144,25 @@
                     </div>
                     <!--修改-->
                     <button id="button1"
-                            onclick="searchOnclick('myForm1','echartsMDT1',option_line,'startDate1','endDate1','/dataurl2_1')"
+                            onclick="searchOnclick('myForm1','echartsSystem1',option_line,'startDate1','endDate1','/dataurl1')"
                             style="margin-left: -20px" type="button"
                             class="btn btn-primary">查询
                     </button>
                 </div>
             </form>
             <!--为ECharts准备一个具备大小（宽高）的Dom--> <!--修改-->
-            <div id="echartsMDT1" class="cssEcharts"></div>
+            <div id="echartsSystem1" class="cssEcharts"></div>
         </div>
         <div class="cssLabel">
 
             <!--修改-->
-            <label style="font-size: 20px;margin-top: -10px">单一系统单一设备年度MDT</label>
+            <label style="font-size: 20px;margin-top: -10px">所有系统使用可用度</label>
             <!--修改-->
             <form id="myForm2" class="form-horizontal">
                 <div class="form-group clearfix">
                     <div style="margin-left: -30px" class="col-md-5 pd-0">
                         <label for="selectTime" class="col-md-4 control-label">开始时间:</label>
-                        <div class="col-md-5" style="margin-left: -20px">
+                        <div class="col-md-6">
                             <div class="input-group">
                                         <span class="input-group-addon" id="sizing-addon2">
                                             <i class="fa fa-calendar" aria-hidden="true"></i>
@@ -175,9 +175,9 @@
                             <span class="error-msg"></span>
                         </div>
                     </div>
-                    <div style="margin-left: -220px" class="col-md-5 pd-0">
+                    <div style="margin-left: -150px" class="col-md-5 pd-0">
                         <label for="selectTime" class="col-md-4 control-label">结束时间:</label>
-                        <div class="col-md-5" style="margin-left: -20px">
+                        <div class="col-md-6">
                             <div class="input-group">
                                         <span class="input-group-addon" id="sizing-addon2">
                                             <i class="fa fa-calendar" aria-hidden="true"></i>
@@ -190,10 +190,56 @@
                         </div>
                     </div>
                     <!--修改-->
+                    <button id="button2"
+                            onclick="searchOnclick('myForm2','echartsSystem2',option_line,'startDate2','endDate2','/dataurl2')"
+                            style="margin-left: 260px" type="button"
+                            class="btn btn-primary">查询
+                    </button>
+                </div>
+            </form>
+            <!--为ECharts准备一个具备大小（宽高）的Dom--> <!--修改-->
+            <div id="echartsSystem2" class="cssEcharts"></div>
+        </div>
+        <div class="cssLabel">
+            <!--修改-->
+            <label style="font-size: 20px;margin-top: -10px">单一系统年度使用可用度</label>
+            <!--修改-->
+            <form id="myForm3" class="form-horizontal">
+                <div class="form-group clearfix">
+                    <div style="margin-left: -30px" class="col-md-5 pd-0">
+                        <label for="selectTime" class="col-md-4 control-label">开始时间:</label>
+                        <div class="col-md-6">
+                            <div class="input-group">
+                                        <span class="input-group-addon" id="sizing-addon2">
+                                            <i class="fa fa-calendar" aria-hidden="true"></i>
+                                        </span>
+                                <!--修改-->
+                                <input id="startDate3" name="startDate3" type="text" autocomplete="off"
+                                       class="form-control"
+                                       aria-describedby="startDate3" placeholder="请输入开始时间" data-provide="datepicker">
+                            </div>
+                            <span class="error-msg"></span>
+                        </div>
+                    </div>
+                    <div style="margin-left: -150px" class="col-md-5 pd-0">
+                        <label for="selectTime" class="col-md-4 control-label">结束时间:</label>
+                        <div class="col-md-6">
+                            <div class="input-group">
+                                        <span class="input-group-addon" id="sizing-addon2">
+                                            <i class="fa fa-calendar" aria-hidden="true"></i>
+                                        </span>
+                                <!--修改-->
+                                <input id="endDate3" name="endDate3" type="text" autocomplete="off"
+                                       class="form-control"
+                                       aria-describedby="endDate3" placeholder="请输入结束时间" data-provide="datepicker">
+                            </div>
+                        </div>
+                    </div>
+                    <!--修改-->
                     <div class="col-md-3 ">
-                        <label style="margin-left: -170px;margin-top: 5px" class="col-md-4">系统:</label>
-                        <div style="margin-left: -70px" class="col-md-6">
-                            <select class="selectpicker pull-right" id="select2_1" name="select2_1">
+                        <label style="margin-left: -70px;margin-top: 5px" class="col-md-4">系统:</label>
+                        <div style="margin-left: 80px" class="col-md-6">
+                            <select class="selectpicker pull-right" id="select3" name="select3">
                                 <option value="6管30mm舰炮系统">6管30mm舰炮系统</option>
                                 <option value="630系统">630系统</option>
                                 <option value="H/PJ26型单管76mm舰炮系统">H/PJ26型单管76mm舰炮系统</option>
@@ -229,47 +275,21 @@
                         </div>
                     </div>
                     <!--修改-->
-                    <div class="col-md-3 ">
-                        <label style="margin-left: 730px;margin-top: -30px" class="col-md-4">舰队:</label>
-                        <div style="margin-left: 830px; margin-top: -35px;" class="col-md-6">
-                            <select class="selectpicker pull-right" id="select2_2" name="select2_2">
-                                <option value="205大队">205大队</option>
-                                <option value="21大队">21大队</option>
-                                <option value="14大队">14大队</option>
-                                <option value="登五支队">登五支队</option>
-                                <option value="护13支队">护13支队</option>
-                                <option value="护14支队">护14支队</option>
-                                <option value="护15支队">护15支队</option>
-                                <option value="护16支队">护16支队</option>
-                                <option value="驱3支队">驱3支队</option>
-                                <option value="作2支队">作2支队</option>
-                            </select><br>
-                        </div>
-                        <!--修改-->
-                        <button id="button2"
-                                onclick="searchOnclick('myForm2','echartsMDT2',option_bar,'startDate2','endDate2','/dataurl2_2')"
-                                style="margin-left: 1000px;margin-top: -60px" type="button"
-                                class="btn btn-primary">查询
-                        </button>
-                    </div>
+                    <button id="button3"
+                            onclick="searchOnclick('myForm3','echartsSystem3',option_bar,'startDate3','endDate3','/dataurl3')"
+                            style="margin-left: -20px" type="button"
+                            class="btn btn-primary">查询
+                    </button>
                 </div>
             </form>
             <!--为ECharts准备一个具备大小（宽高）的Dom--> <!--修改-->
-            <div id="echartsMDT2" class="cssEcharts"></div>
+            <div id="echartsSystem3" class="cssEcharts"></div>
         </div>
     </div>
 {% endblock %}
 
 {% block js %}
     <script>
-        //重写 第二个图 bootstrap-select宽度  <!--修改-->
-        $("#select2_1").selectpicker({
-            width: 150,
-        })
-        $("#select2_2").selectpicker({
-            width: 150,
-        })
-
         /*
                添加对话框：初始化时间选择 结束时间始终不大于开始时间和当前时间
                参数 = '开始时间和结束时间输入框id'
@@ -362,7 +382,8 @@
 
         $(function () {
             DatePicker("#startDate1", "#endDate1");
-            showYearDatePicker("#startDate2", "#endDate2");
+            DatePicker("#startDate2", "#endDate2");
+            showYearDatePicker("#startDate3", "#endDate3");
         });
     </script>
     <script>
@@ -388,6 +409,7 @@
                 {#alert('请选择时间')#}
                 //弹出‘请选择时间‘模态框
                 $("#dateModal").modal();
+
             } else {
                 //格式正确 发送时间和选项内容到前台
                 $.ajax({
@@ -749,8 +771,9 @@
 
         // 修改参数 初始化界面图像
         $(function () {
-            load_data('echartsMDT1', option_bar, '/t')
-            load_data('echartsMDT2', option_line, '/t')
+            load_data('echartsSystem1', option_bar, '/t')
+            load_data('echartsSystem2', option_bar, '/t')
+            load_data('echartsSystem3', option_line, '/t')
         });
     </script>
 {% endblock %}

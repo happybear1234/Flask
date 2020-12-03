@@ -38,15 +38,12 @@ def dataurl1():
         date2 = request.form.get('endDate1')
         date3 = request.form.get('select1')
         print('post1', date1, date2, date3)
-        return jsonify({"success": 200, "date1": date1, "date2": date2})
+        return jsonify({"status": 200})
     if request.method == 'GET':
         res = []
         for i in get_data():
             res.append({"name": i[0], "value": i[1]})
         return json.dumps(res, ensure_ascii=False)
-
-
-
 
 
 @app.route('/dataurl2', methods=['POST', 'GET'])
@@ -55,7 +52,7 @@ def dataurl2():
         date1 = request.form.get('startDate2')
         date2 = request.form.get('endDate2')
         print('post2', date1, date2)
-        return redirect('/brigade')
+        return jsonify({"status": 200})
     if request.method == 'GET':
         res = []
         for i in get_data():
@@ -70,7 +67,7 @@ def dataurl3():
         date2 = request.form.get('endDate3')
         date3 = request.form.get('select3')
         print('post3', date1, date2, date3)
-        return redirect('/brigade')
+        return jsonify({"status": 200})
     if request.method == 'GET':
         res = []
         for i in get_data():
@@ -86,7 +83,7 @@ def dataurl2_1():
         date2 = request.form.get('endDate1')
         date3 = request.form.get('select1')
         print('post1', date1, date2, date3)
-        return redirect('/brigade')
+        return jsonify({"status": 200})
     if request.method == 'GET':
         res = []
         for i in get_data():
@@ -102,7 +99,7 @@ def dataurl2_2():
         date3 = request.form.get('select2_1')
         date4 = request.form.get('select2_2')
         print('post2', date1, date2, date3, date4)
-        return redirect('/brigade')
+        return jsonify({"status": 200})
     if request.method == 'GET':
         res = []
         for i in get_data():
@@ -123,6 +120,11 @@ def calculate():
 @app.route('/brigade')
 def brigade():
     return render_template('brigade.html')
+
+
+@app.route('/system')
+def system():
+    return render_template('system.html')
 
 
 @app.route('/experiment')

@@ -33,6 +33,40 @@
 {% endblock %}
 
 {% block content %}
+    <div id="dateModal" class="modal fade" tabindex="-1" role="dialog" style="margin: 10%;">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">提示</h4>
+                </div>
+                <div class="modal-body">
+                    <p>请选择时间</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+    <div id="searchModal" class="modal fade" tabindex="-1" role="dialog" style="margin: 10%;">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">提示</h4>
+                </div>
+                <div class="modal-body">
+                    <p>查询失败</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
     <div class="container cssMain">
         <div class="cssLabel">
             <!--修改-->
@@ -71,19 +105,40 @@
                     </div>
                     <!--修改-->
                     <div class="col-md-3 ">
-                        <label style="margin-left: -70px;margin-top: 5px" class="col-md-4">舰队:</label>
+                        <label style="margin-left: -70px;margin-top: 5px" class="col-md-4">系统:</label>
                         <div style="margin-left: 80px" class="col-md-6">
                             <select class="selectpicker pull-right" id="select1" name="select1">
-                                <option value="205大队">205大队</option>
-                                <option value="21大队">21大队</option>
-                                <option value="14大队">14大队</option>
-                                <option value="登五支队">登五支队</option>
-                                <option value="护13支队">护13支队</option>
-                                <option value="护14支队">护14支队</option>
-                                <option value="护15支队">护15支队</option>
-                                <option value="护16支队">护16支队</option>
-                                <option value="驱3支队">驱3支队</option>
-                                <option value="作2支队">作2支队</option>
+                                <option value="6管30mm舰炮系统">6管30mm舰炮系统</option>
+                                <option value="630系统">630系统</option>
+                                <option value="H/PJ26型单管76mm舰炮系统">H/PJ26型单管76mm舰炮系统</option>
+                                <option value="H/PJ13型6管30mm舰炮系统">H/PJ13型6管30mm舰炮系统</option>
+                                <option value="单76系统">单76系统</option>
+                                <option value="单76舰炮火控系统">单76舰炮火控系统</option>
+                                <option value="双100炮系统">双100炮系统</option>
+                                <option value="单76炮系统">单76炮系统</option>
+                                <option value="单100系统">单100系统</option>
+                                <option value="H/PJ333B舰炮系统">H/PJ333B舰炮系统</option>
+                                <option value="双100炮系统">双100炮系统</option>
+                                <option value="双100系统">双100系统</option>
+                                <option value="双37系统">双37系统</option>
+                                <option value="3200火箭炮系统">3200火箭炮系统</option>
+                                <option value="1130舰炮武器系统">1130舰炮武器系统</option>
+                                <option value="单管76舰炮武器系统">单管76舰炮武器系统</option>
+                                <option value="万发系统">万发系统</option>
+                                <option value="857副炮系统">857副炮系统</option>
+                                <option value="单76主炮系统">单76主炮系统</option>
+                                <option value="单130系统">单130系统</option>
+                                <option value="非系统">非系统</option>
+                                <option value="400H2逆变电源">400H2逆变电源</option>
+                                <option value="11管30mm舰炮系统">11管30mm舰炮系统</option>
+                                <option value="360系统">360系统</option>
+                                <option value="69A式双30mm舰炮系统">69A式双30mm舰炮系统</option>
+                                <option value="76F双37㎜舰炮">76F双37㎜舰炮</option>
+                                <option value="7管30mm舰炮系统">7管30mm舰炮系统</option>
+                                <option value="857系统">857系统</option>
+                                <option value="H/LJQ-363A搜索雷达">H/LJQ-363A搜索雷达</option>
+                                <option value="H/PJ26型单管76mm舰炮">H/PJ26型单管76mm舰炮</option>
+                                <option value="АК-130舰炮">АК-130舰炮</option>
                             </select><br>
                         </div>
                     </div>
@@ -182,19 +237,40 @@
                     </div>
                     <!--修改-->
                     <div class="col-md-3 ">
-                        <label style="margin-left: -70px;margin-top: 5px" class="col-md-4">舰队:</label>
+                        <label style="margin-left: -70px;margin-top: 5px" class="col-md-4">系统:</label>
                         <div style="margin-left: 80px" class="col-md-6">
                             <select class="selectpicker pull-right" id="select3" name="select3">
-                                <option value="205大队">205大队</option>
-                                <option value="21大队">21大队</option>
-                                <option value="14大队">14大队</option>
-                                <option value="登五支队">登五支队</option>
-                                <option value="护13支队">护13支队</option>
-                                <option value="护14支队">护14支队</option>
-                                <option value="护15支队">护15支队</option>
-                                <option value="护16支队">护16支队</option>
-                                <option value="驱3支队">驱3支队</option>
-                                <option value="作2支队">作2支队</option>
+                                <option value="6管30mm舰炮系统">6管30mm舰炮系统</option>
+                                <option value="630系统">630系统</option>
+                                <option value="H/PJ26型单管76mm舰炮系统">H/PJ26型单管76mm舰炮系统</option>
+                                <option value="H/PJ13型6管30mm舰炮系统">H/PJ13型6管30mm舰炮系统</option>
+                                <option value="单76系统">单76系统</option>
+                                <option value="单76舰炮火控系统">单76舰炮火控系统</option>
+                                <option value="双100炮系统">双100炮系统</option>
+                                <option value="单76炮系统">单76炮系统</option>
+                                <option value="单100系统">单100系统</option>
+                                <option value="H/PJ333B舰炮系统">H/PJ333B舰炮系统</option>
+                                <option value="双100炮系统">双100炮系统</option>
+                                <option value="双100系统">双100系统</option>
+                                <option value="双37系统">双37系统</option>
+                                <option value="3200火箭炮系统">3200火箭炮系统</option>
+                                <option value="1130舰炮武器系统">1130舰炮武器系统</option>
+                                <option value="单管76舰炮武器系统">单管76舰炮武器系统</option>
+                                <option value="万发系统">万发系统</option>
+                                <option value="857副炮系统">857副炮系统</option>
+                                <option value="单76主炮系统">单76主炮系统</option>
+                                <option value="单130系统">单130系统</option>
+                                <option value="非系统">非系统</option>
+                                <option value="400H2逆变电源">400H2逆变电源</option>
+                                <option value="11管30mm舰炮系统">11管30mm舰炮系统</option>
+                                <option value="360系统">360系统</option>
+                                <option value="69A式双30mm舰炮系统">69A式双30mm舰炮系统</option>
+                                <option value="76F双37㎜舰炮">76F双37㎜舰炮</option>
+                                <option value="7管30mm舰炮系统">7管30mm舰炮系统</option>
+                                <option value="857系统">857系统</option>
+                                <option value="H/LJQ-363A搜索雷达">H/LJQ-363A搜索雷达</option>
+                                <option value="H/PJ26型单管76mm舰炮">H/PJ26型单管76mm舰炮</option>
+                                <option value="АК-130舰炮">АК-130舰炮</option>
                             </select><br>
                         </div>
                     </div>
@@ -268,7 +344,6 @@
                     minViewMode: 2,
                     language: "zh-CN",
                     autoclose: true,
-                    startView: 0,
                     format: "yyyy",
                     clearBtn: true,
                     todayBtn: false,
@@ -331,7 +406,9 @@
             })
             // 判断 时间格式
             if (formDates[startDate] == '' || formDates[endDate] == '') {
-                alert('请选择时间')
+                {#alert('请选择时间')#}
+                //弹出‘请选择时间‘模态框
+                $("#dateModal").modal();
             } else {
                 //格式正确 发送时间和选项内容到前台
                 $.ajax({
@@ -339,15 +416,38 @@
                     dataType: "text",
                     url: DataUrl,
                     data: formDate,
+                    success: function (status) {
+                        console.log(status)
+                        //从前台读取数据重新加载图像
+                        load_data(echartId, option, DataUrl);
+                    },
+                    error: function () {
+                        {#alert('查询失败')#}
+                        //弹出‘查询失败‘模态框
+                        $("#searchModal").modal();
+                    }
                 });
-                //从前台读取数据重新加载图像
-                load_data(echartId, option, DataUrl)
             }
         }
     </script>
     <script>
         // 柱状图样式
         var option_bar = {
+            dataZoom: [
+                {
+                    type: 'slider',
+                    show: true,
+                    xAxisIndex: [0],
+                    start: 1,
+                    end: 35
+                },
+                {
+                    type: 'inside',
+                    xAxisIndex: [0],
+                    start: 1,
+                    end: 35
+                },
+            ],
             backgroundColor: '#00265f',
             title: {
                 y: "4%",
@@ -467,6 +567,21 @@
     <script>
         // 折线图样式
         var option_line = {
+            dataZoom: [
+                {
+                    type: 'slider',
+                    show: true,
+                    xAxisIndex: [0],
+                    start: 1,
+                    end: 35
+                },
+                {
+                    type: 'inside',
+                    xAxisIndex: [0],
+                    start: 1,
+                    end: 35
+                },
+            ],
             backgroundColor: '#080b30',
             title: {
                 y: "4%",
@@ -630,7 +745,6 @@
             myChart.showLoading();
             $.get(url).done(function (data) {
                 myChart.hideLoading();
-                console.log(data)
                 //遍历，分别取出key，value 字段名
                 data = $.parseJSON(data)
                 $.each(data, function (index, item) {

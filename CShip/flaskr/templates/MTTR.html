@@ -33,6 +33,40 @@
 {% endblock %}
 
 {% block content %}
+    <div id="dateModal" class="modal fade" tabindex="-1" role="dialog" style="margin: 10%;">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">提示</h4>
+                </div>
+                <div class="modal-body">
+                    <p>请选择时间</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+    <div id="searchModal" class="modal fade" tabindex="-1" role="dialog" style="margin: 10%;">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">提示</h4>
+                </div>
+                <div class="modal-body">
+                    <p>查询失败</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
     <div class="container cssMain">
         <div class="cssLabel">
             <!--修改-->
@@ -248,7 +282,6 @@
                     minViewMode: 2,
                     language: "zh-CN",
                     autoclose: true,
-                    startView: 0,
                     format: "yyyy",
                     clearBtn: true,
                     todayBtn: false,
@@ -310,7 +343,9 @@
             })
             // 判断 时间格式
             if (formDates[startDate] == '' || formDates[endDate] == '') {
-                alert('请选择时间')
+                {#alert('请选择时间')#}
+                //弹出‘请选择时间‘模态框
+                $("#dateModal").modal();
             } else {
                 //格式正确 发送时间和选项内容到前台
                 $.ajax({
@@ -318,15 +353,38 @@
                     dataType: "text",
                     url: DataUrl,
                     data: formDate,
+                    success: function (status) {
+                        console.log(status)
+                        //从前台读取数据重新加载图像
+                        load_data(echartId, option, DataUrl);
+                    },
+                    error: function () {
+                        {#alert('查询失败')#}
+                        //弹出‘查询失败‘模态框
+                        $("#searchModal").modal();
+                    }
                 });
-                //从前台读取数据重新加载图像
-                load_data(echartId, option, DataUrl)
             }
         }
     </script>
     <script>
         // 柱状图样式
         var option_bar = {
+            dataZoom: [
+                {
+                    type: 'slider',
+                    show: true,
+                    xAxisIndex: [0],
+                    start: 1,
+                    end: 35
+                },
+                {
+                    type: 'inside',
+                    xAxisIndex: [0],
+                    start: 1,
+                    end: 35
+                },
+            ],
             backgroundColor: '#00265f',
             title: {
                 y: "4%",
@@ -446,6 +504,21 @@
     <script>
         // 折线图样式
         var option_line = {
+            dataZoom: [
+                {
+                    type: 'slider',
+                    show: true,
+                    xAxisIndex: [0],
+                    start: 1,
+                    end: 35
+                },
+                {
+                    type: 'inside',
+                    xAxisIndex: [0],
+                    start: 1,
+                    end: 35
+                },
+            ],
             backgroundColor: '#080b30',
             title: {
                 y: "4%",
