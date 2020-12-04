@@ -39,10 +39,13 @@ def getdate():
 @app.route('/dataurl1', methods=['POST', 'GET'])
 def dataurl1():
     if request.method == "POST":
-        date1 = request.form.get('select3_1')
-        date2 = request.form.get('select3_2')
-        date3 = request.form.get('select3_3')
-        print('post1', 'select3_1:', date1, 'select3_2:', date2, 'select3_3:', date3)
+        date0_1 = request.form.get('startDate2')
+        date0_2 = request.form.get('endDate2')
+        date1 = request.form.get('select2_1')
+        date2 = request.form.get('select2_2')
+        date3 = request.form.get('select2_3')
+        date4 = request.form.get('select2_4')
+        print('post1',date0_1,date0_2, 'select1_1:', date1, 'select1_2:', date2, 'select1_3:', date3,'select1_4:', date4)
         return jsonify({"status": 200})
     if request.method == 'GET':
         res = []
