@@ -405,7 +405,6 @@
                     minViewMode: 2,
                     language: "zh-CN",
                     autoclose: true,
-                    startView: 0,
                     format: "yyyy",
                     clearBtn: true,
                     todayBtn: false,
@@ -446,7 +445,7 @@
             })
             // 判断 时间格式
             if (formDates[startDate] == '' || formDates[endDate] == '') {
-                alert('请选择时间')
+                {#alert('请选择时间')#}
                 //弹出‘请选择时间‘模态框
                 $("#dateModal").modal();
             } else {

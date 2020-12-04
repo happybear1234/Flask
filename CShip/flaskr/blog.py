@@ -7,9 +7,11 @@ from flask import jsonify
 
 app = Flask(__name__)
 
+
 @app.route('/echart')
 def echartTest():
     return render_template('echartTest.html')
+
 
 # 发送图像加载数据
 @app.route('/t', methods=['GET', 'POST'])
@@ -25,8 +27,8 @@ def t():
 @app.route('/getdate', methods=['POST', 'GET'])
 def getdate():
     if request.method == "POST":
-        date1 = request.form.get('startDate1')
-        date2 = request.form.get('endDate1')
+        date1 = request.form.get('select1')
+        date2 = request.form.get('select1')
         date3 = request.form.get('select1')
         print('post', date1, date2, date3)
     return redirect('/brigade')
@@ -37,10 +39,10 @@ def getdate():
 @app.route('/dataurl1', methods=['POST', 'GET'])
 def dataurl1():
     if request.method == "POST":
-        date1 = request.form.get('startDate1')
-        date2 = request.form.get('endDate1')
-        date3 = request.form.get('select1')
-        print('post1', date1, date2, date3)
+        date1 = request.form.get('select3_1')
+        date2 = request.form.get('select3_2')
+        date3 = request.form.get('select3_3')
+        print('post1', 'select3_1:', date1, 'select3_2:', date2, 'select3_3:', date3)
         return jsonify({"status": 200})
     if request.method == 'GET':
         res = []
@@ -54,7 +56,10 @@ def dataurl2():
     if request.method == "POST":
         date1 = request.form.get('startDate2')
         date2 = request.form.get('endDate2')
-        print('post2', date1, date2)
+        date3 = request.form.get('select2_1')
+        date4 = request.form.get('select2_2')
+        date5 = request.form.get('select2_3')
+        print('post2', date1, date2,date3,date4,date5)
         return jsonify({"status": 200})
     if request.method == 'GET':
         res = []
