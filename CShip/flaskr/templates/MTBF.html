@@ -85,258 +85,140 @@
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
     <div class="container cssMain">
-    <div class="cssLabel">
-        <!--修改-->
-        <label style="font-size: 20px;margin-top: -10px">单一系统所有设备MTBF</label>
-        <div class="row">
+        <div class="cssLabel">
             <!--修改-->
-            <form id="myForm1" class="form-horizontal">
-                <div class="form-group clearfix">
-                    <div style="margin-left: -30px" class="col-md-5 pd-0">
-                        <label for="selectTime" class="col-md-4 control-label">开始时间:</label>
-                        <div class="col-md-6">
-                            <div class="input-group">
-                                        <span class="input-group-addon" id="sizing-addon2">
-                                            <i class="fa fa-calendar" aria-hidden="true"></i>
-                                        </span>
-                                <!--修改-->
-                                <input id="startDate1" name="startDate1" type="text" autocomplete="off"
-                                       class="form-control"
-                                       aria-describedby="startDate1" placeholder="请输入开始时间"
-                                       data-provide="datepicker">
-                            </div>
-                            <span class="error-msg"></span>
-                        </div>
-                    </div>
-                    <div style="margin-left: -150px" class="col-md-5 pd-0">
-                        <label for="selectTime" class="col-md-4 control-label">结束时间:</label>
-                        <div class="col-md-6">
-                            <div class="input-group">
-                                        <span class="input-group-addon" id="sizing-addon2">
-                                            <i class="fa fa-calendar" aria-hidden="true"></i>
-                                        </span>
-                                <!--修改-->
-                                <input id="endDate1" name="endDate1" type="text" autocomplete="off"
-                                       class="form-control"
-                                       aria-describedby="endDate1" placeholder="请输入结束时间" data-provide="datepicker">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </form>
-        </div>
-        <div class="row">
-            <div class="col-md-4">
+            <label style="font-size: 20px;margin-top: -10px">单一系统所有设备MTBF</label>
+            <div class="row">
                 <!--修改-->
-                <label style="margin-left: 52px">系统:</label>
-                <div style="margin-left: 113px;margin-top: -33px">
-                    <select class="selectpicker" onchange="selectOperation('select1_1','select1_2','select1_3')"
-                            id="select1_1" name="select1_1" title="请选择系统">
-                        <option value="6管30mm舰炮系统">6管30mm舰炮系统</option>
-                        <option value="630系统">630系统</option>
-                        <option value="H/PJ26型单管76mm舰炮系统">H/PJ26型单管76mm舰炮系统</option>
-                        <option value="H/PJ13型6管30mm舰炮系统">H/PJ13型6管30mm舰炮系统</option>
-                        <option value="单76系统">单76系统</option>
-                        <option value="单76舰炮火控系统">单76舰炮火控系统</option>
-                        <option value="双100炮系统">双100炮系统</option>
-                        <option value="单76炮系统">单76炮系统</option>
-                        <option value="单100系统">单100系统</option>
-                        <option value="H/PJ333B舰炮系统">H/PJ333B舰炮系统</option>
-                        <option value="双100炮系统">双100炮系统</option>
-                        <option value="双100系统">双100系统</option>
-                        <option value="双37系统">双37系统</option>
-                        <option value="3200火箭炮系统">3200火箭炮系统</option>
-                        <option value="1130舰炮武器系统">1130舰炮武器系统</option>
-                        <option value="单管76舰炮武器系统">单管76舰炮武器系统</option>
-                        <option value="万发系统">万发系统</option>
-                        <option value="857副炮系统">857副炮系统</option>
-                        <option value="单76主炮系统">单76主炮系统</option>
-                        <option value="单130系统">单130系统</option>
-                        <option value="非系统">非系统</option>
-                        <option value="400H2逆变电源">400H2逆变电源</option>
-                        <option value="11管30mm舰炮系统">11管30mm舰炮系统</option>
-                        <option value="360系统">360系统</option>
-                        <option value="69A式双30mm舰炮系统">69A式双30mm舰炮系统</option>
-                        <option value="76F双37㎜舰炮">76F双37㎜舰炮</option>
-                        <option value="7管30mm舰炮系统">7管30mm舰炮系统</option>
-                        <option value="857系统">857系统</option>
-                        <option value="H/LJQ-363A搜索雷达">H/LJQ-363A搜索雷达</option>
-                        <option value="H/PJ26型单管76mm舰炮">H/PJ26型单管76mm舰炮</option>
-                        <option value="АК-130舰炮">АК-130舰炮</option>
-                    </select><br>
-                </div>
+                <form id="myForm1" class="form-horizontal">
+                    <div class="form-group clearfix">
+                        <div style="margin-left: -30px" class="col-md-5 pd-0">
+                            <label for="selectTime" class="col-md-4 control-label">开始时间:</label>
+                            <div class="col-md-6">
+                                <div class="input-group">
+                                        <span class="input-group-addon" id="sizing-addon2">
+                                            <i class="fa fa-calendar" aria-hidden="true"></i>
+                                        </span>
+                                    <!--修改-->
+                                    <input id="startDate1" name="startDate1" type="text" autocomplete="off"
+                                           class="form-control"
+                                           aria-describedby="startDate1" placeholder="请输入开始时间"
+                                           data-provide="datepicker">
+                                </div>
+                                <span class="error-msg"></span>
+                            </div>
+                        </div>
+                        <div style="margin-left: -150px" class="col-md-5 pd-0">
+                            <label for="selectTime" class="col-md-4 control-label">结束时间:</label>
+                            <div class="col-md-6">
+                                <div class="input-group">
+                                        <span class="input-group-addon" id="sizing-addon2">
+                                            <i class="fa fa-calendar" aria-hidden="true"></i>
+                                        </span>
+                                    <!--修改-->
+                                    <input id="endDate1" name="endDate1" type="text" autocomplete="off"
+                                           class="form-control"
+                                           aria-describedby="endDate1" placeholder="请输入结束时间" data-provide="datepicker">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
             </div>
-            <!--修改-->
-            <div class="col-md-5">
-                <label class="col-md-4" style="margin-left: -8px;">舰队:</label>
-                <div style="margin-left: -83px;margin-top: -7px" class="col-md-3">
-                    <select class="selectpicker" onchange="selectOperation('select1_2','select1_1','select1_3')"
-                            id="select1_2"
-                            name="select1_2" title="请选择舰队">
-                        <option value="205大队">205大队</option>
-                        <option value="21大队">21大队</option>
-                        <option value="14大队">14大队</option>
-                        <option value="登五支队">登五支队</option>
-                        <option value="护13支队">护13支队</option>
-                        <option value="护14支队">护14支队</option>
-                        <option value="护15支队">护15支队</option>
-                        <option value="护16支队">护16支队</option>
-                        <option value="驱3支队">驱3支队</option>
-                        <option value="作2支队">作2支队</option>
-                    </select><br>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <label style="margin-left: -145px">试验:</label>
-                <div style="margin-left: -80px;margin-top: -32px">
+            <div class="row">
+                <div class="col-md-4">
                     <!--修改-->
-                    <select class="selectpicker" onchange="selectOperation('select1_3','select1_1','select1_2')"
-                            id="select1_3" name="select1_3" title="请选择试验">
-                        <option value="4A系泊航行">4A系泊航行</option>
-                        <option value="4A陆试">4A陆试</option>
-                        <option value="54系泊航行">54系泊航行</option>
-                        <option value="55陆试">55陆试</option>
-                        <option value="052陆试">052陆试</option>
-                        <option value="2D陆试">2D陆试</option>
-                        <option value="2D系泊航行">2D系泊航行</option>
-                        <option value="6A系泊航行">6A系泊航行</option>
-                        <option value="172系泊航行">172系泊航行</option>
-                    </select><br>
+                    <label style="margin-left: 52px">系统:</label>
+                    <div style="margin-left: 113px;margin-top: -33px">
+                        <select class="selectpicker" onchange="selectOperation('select1_1','select1_2','select1_3')"
+                                id="select1_1" name="select1_1" title="请选择系统">
+                            <option value="6管30mm舰炮系统">6管30mm舰炮系统</option>
+                            <option value="630系统">630系统</option>
+                            <option value="H/PJ26型单管76mm舰炮系统">H/PJ26型单管76mm舰炮系统</option>
+                            <option value="H/PJ13型6管30mm舰炮系统">H/PJ13型6管30mm舰炮系统</option>
+                            <option value="单76系统">单76系统</option>
+                            <option value="单76舰炮火控系统">单76舰炮火控系统</option>
+                            <option value="双100炮系统">双100炮系统</option>
+                            <option value="单76炮系统">单76炮系统</option>
+                            <option value="单100系统">单100系统</option>
+                            <option value="H/PJ333B舰炮系统">H/PJ333B舰炮系统</option>
+                            <option value="双100炮系统">双100炮系统</option>
+                            <option value="双100系统">双100系统</option>
+                            <option value="双37系统">双37系统</option>
+                            <option value="3200火箭炮系统">3200火箭炮系统</option>
+                            <option value="1130舰炮武器系统">1130舰炮武器系统</option>
+                            <option value="单管76舰炮武器系统">单管76舰炮武器系统</option>
+                            <option value="万发系统">万发系统</option>
+                            <option value="857副炮系统">857副炮系统</option>
+                            <option value="单76主炮系统">单76主炮系统</option>
+                            <option value="单130系统">单130系统</option>
+                            <option value="非系统">非系统</option>
+                            <option value="400H2逆变电源">400H2逆变电源</option>
+                            <option value="11管30mm舰炮系统">11管30mm舰炮系统</option>
+                            <option value="360系统">360系统</option>
+                            <option value="69A式双30mm舰炮系统">69A式双30mm舰炮系统</option>
+                            <option value="76F双37㎜舰炮">76F双37㎜舰炮</option>
+                            <option value="7管30mm舰炮系统">7管30mm舰炮系统</option>
+                            <option value="857系统">857系统</option>
+                            <option value="H/LJQ-363A搜索雷达">H/LJQ-363A搜索雷达</option>
+                            <option value="H/PJ26型单管76mm舰炮">H/PJ26型单管76mm舰炮</option>
+                            <option value="АК-130舰炮">АК-130舰炮</option>
+                        </select><br>
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-3">
                 <!--修改-->
-                <button id="button1"
-                        onclick="searchOnclick('myForm1','echartsMTBF1',option_bar,'startDate1','endDate1','/dataurl1')"
-                        style="margin-left: 1010px;margin-top: -60px" type="button"
-                        class="btn btn-primary">查询
-                </button>
-            </div>
-        </div>
-        <!--为ECharts准备一个具备大小（宽高）的Dom--> <!--修改-->
-        <div id="echartsMTBF1" class="cssEcharts"></div>
-    </div>
-    <div class="cssLabel">
-        <!--修改-->
-        <label style="font-size: 20px;margin-top: -10px">单一系统单一设备年度MTBF</label>
-        <div class="row">
-            <!--修改-->
-            <form id="myForm2" class="form-horizontal">
-                <div class="form-group clearfix">
-                    <div style="margin-left: -30px" class="col-md-5 pd-0">
-                        <label for="selectTime" class="col-md-4 control-label">开始时间:</label>
-                        <div class="col-md-6">
-                            <div class="input-group">
-                                        <span class="input-group-addon" id="sizing-addon2">
-                                            <i class="fa fa-calendar" aria-hidden="true"></i>
-                                        </span>
-                                <!--修改-->
-                                <input id="startDate2" name="startDate2" type="text" autocomplete="off"
-                                       class="form-control"
-                                       aria-describedby="startDate2" placeholder="请输入开始时间"
-                                       data-provide="datepicker">
-                            </div>
-                            <span class="error-msg"></span>
-                        </div>
-                    </div>
-                    <div style="margin-left: -150px" class="col-md-5 pd-0">
-                        <label for="selectTime" class="col-md-4 control-label">结束时间:</label>
-                        <div class="col-md-6">
-                            <div class="input-group">
-                                        <span class="input-group-addon" id="sizing-addon2">
-                                            <i class="fa fa-calendar" aria-hidden="true"></i>
-                                        </span>
-                                <!--修改-->
-                                <input id="endDate2" name="endDate2" type="text" autocomplete="off"
-                                       class="form-control"
-                                       aria-describedby="endDate2" placeholder="请输入结束时间" data-provide="datepicker">
-                            </div>
-                        </div>
+                <div class="col-md-5">
+                    <label class="col-md-4" style="margin-left: -8px;">舰队:</label>
+                    <div style="margin-left: -83px;margin-top: -7px" class="col-md-3">
+                        <select class="selectpicker" onchange="selectOperation('select1_2','select1_1','select1_3')"
+                                id="select1_2"
+                                name="select1_2" title="请选择舰队">
+                            <option value="205大队">205大队</option>
+                            <option value="21大队">21大队</option>
+                            <option value="14大队">14大队</option>
+                            <option value="登五支队">登五支队</option>
+                            <option value="护13支队">护13支队</option>
+                            <option value="护14支队">护14支队</option>
+                            <option value="护15支队">护15支队</option>
+                            <option value="护16支队">护16支队</option>
+                            <option value="驱3支队">驱3支队</option>
+                            <option value="作2支队">作2支队</option>
+                        </select><br>
                     </div>
                 </div>
-            </form>
-            <!--修改-->
-            <div>
-                <div class="col-md-3" style="margin-left: 697px;margin-top: -40px">
-                    <label>设备:</label>
+                <div class="col-md-3">
+                    <label style="margin-left: -145px">试验:</label>
+                    <div style="margin-left: -80px;margin-top: -32px">
+                        <!--修改-->
+                        <select class="selectpicker" onchange="selectOperation('select1_3','select1_1','select1_2')"
+                                id="select1_3" name="select1_3" title="请选择试验">
+                            <option value="4A系泊航行">4A系泊航行</option>
+                            <option value="4A陆试">4A陆试</option>
+                            <option value="54系泊航行">54系泊航行</option>
+                            <option value="55陆试">55陆试</option>
+                            <option value="052陆试">052陆试</option>
+                            <option value="2D陆试">2D陆试</option>
+                            <option value="2D系泊航行">2D系泊航行</option>
+                            <option value="6A系泊航行">6A系泊航行</option>
+                            <option value="172系泊航行">172系泊航行</option>
+                        </select><br>
+                    </div>
                 </div>
-                <div class="col-md-3" style="margin-left: 722px;margin-top: -50px">
-                    <select class="selectpicker pull-right" id="select2_1" name="select2_1" onchange="selectOperation('select2_1','select2_2','select2_3')">
-                        <option value="H/PJ13型6管30mm舰炮">H/PJ13型6管30mm舰炮</option>
-                        <option value="ZGJ-1C光电跟踪仪">ZGJ-1C光电跟踪仪</option>
-                        <option value="触摸屏">触摸屏</option>
-                        <option value="630舰炮">630舰炮</option>
-                        <option value="监控柜">监控柜</option>
-                        <option value="光电跟踪仪">光电跟踪仪</option>
-                        <option value="随动系统">随动系统</option>
-                        <option value="630舰炮">630舰炮</option>
-                        <option value="上软导引">上软导引</option>
-                        <option value="下软导引">下软导引</option>
-                        <option value="随动部分">随动部分</option>
-                        <option value="机械部分">机械部分</option>
-                        <option value="导气设备">导气设备</option>
-                        <option value="冷却系统">冷却系统</option>
-                        <option value="双联装57mm舰炮">双联装57mm舰炮</option>
-                        <option value="双联装37mm舰炮">双联装37mm舰炮</option>
-                        <option value="66式双57mm舰炮">66式双57mm舰炮</option>
-                        <option value="61式双37mm舰炮（一）">61式双37mm舰炮（一）</option>
-                        <option value="61式双38mm舰炮（二）">61式双38mm舰炮（二）</option>
-                        <option value="61式双39mm舰炮（三）">61式双39mm舰炮（三）</option>
-                        <option value="H/PJ17单管30毫米舰炮">H/PJ17单管30毫米舰炮</option>
-                        <option value="单76毫米舰炮">单76毫米舰炮</option>
-                        <option value="630舰炮火控设备">630舰炮火控设备</option>
-                        <option value="H/PJ13型6管30mm舰炮">H/PJ13型6管30mm舰炮</option>
-                        <option value="630舰炮">630舰炮</option>
-                        <option value="H/ZGJ-1C光电跟踪仪">H/ZGJ-1C光电跟踪仪</option>
-                        <option value="H/PJ130401监控柜">H/PJ130401监控柜</option>
-                        <option value="H/PJ130402监控柜">H/PJ130402监控柜</option>
-                        <option value="H/PJ130403监控柜">H/PJ130403监控柜</option>
-                        <option value="1C光电跟踪仪">1C光电跟踪仪</option>
-                        <option value="单管30毫米舰炮">单管30毫米舰炮</option>
-                        <option value="卡什坦导弹火炮系统">卡什坦导弹火炮系统</option>
-                        <option value="61F双37炮">61F双37炮</option>
-                        <option value="61F双25炮">61F双25炮</option>
-                        <option value="火控设备">火控设备</option>
-                        <option value="349A跟踪雷达">349A跟踪雷达</option>
-                        <option value="火控设备">火控设备</option>
-                        <option value="347B跟踪雷达">347B跟踪雷达</option>
-                        <option value="单76毫米舰炮">单76毫米舰炮</option>
-                        <option value="349A雷达">349A雷达</option>
-                        <option value="扬弹机">扬弹机</option>
-                        <option value="76监控台">76监控台</option>
-                        <option value="枪炮长显控台">枪炮长显控台</option>
-                        <option value="H/ZPJ-2C指挥仪">H/ZPJ-2C指挥仪</option>
-                        <option value="主炮雷达">主炮雷达</option>
-                        <option value="跟踪雷达">跟踪雷达</option>
-                        <option value="弹药装载机">弹药装载机</option>
-                        <option value="左前副炮随动">左前副炮随动</option>
-                        <option value="右前副炮随动">右前副炮随动</option>
-                        <option value="左后副炮随动">左后副炮随动</option>
-                        <option value="右后副炮随动">右后副炮随动</option>
-                        <option value="前主炮随动">前主炮随动</option>
-                        <option value="后主炮随动">后主炮随动</option>
-                        <option value="主炮指挥仪">主炮指挥仪</option>
-                        <option value="副炮指挥仪">副炮指挥仪</option>
-                        <option value="副枪炮长显控台">副枪炮长显控台</option>
-                        <option value="枪炮长显控台">枪炮长显控台</option>
-                        <option value="JM-90瞄准仪">JM-90瞄准仪</option>
-                        <option value="H/ZPJ-4C指挥仪">H/ZPJ-4C指挥仪</option>
-                        <option value="副炮雷达">副炮雷达</option>
-                        <option value="随动控制柜">随动控制柜</option>
-                        <option value="反潜指挥仪">反潜指挥仪</option>
-                        <option value="单76毫米舰炮">单76毫米舰炮</option>
-                        <option value="火控系统">火控系统</option>
-                        <option value="H/ZFJ-1型近程反导火控设备">H/ZFJ-1型近程反导火控设备</option>
-                        <option value="H/LJP-349跟踪雷达">H/LJP-349跟踪雷达</option>
-                        <option value="H/ZGJ-4光电跟踪仪">H/ZGJ-4光电跟踪仪</option>
-                        <option value="H/JWJ-1捷联垂直参考基准">H/JWJ-1捷联垂直参考基准</option>
-                        <option value="H/PJ12型7管30mm舰炮">H/PJ12型7管30mm舰炮</option>
-                        <option value="H/PJ13型6管30mm舰炮">H/PJ13型6管30mm舰炮</option>
-                        <option value="ZGJ-1C光电跟踪仪">ZGJ-1C光电跟踪仪</option>
-                    </select><br>
+                <div class="col-md-3">
+                    <!--修改-->
+                    <button id="button1"
+                            onclick="searchOnclick('myForm1','echartsMTBF1',option_bar,'startDate1','endDate1','/dataurl1')"
+                            style="margin-left: 1010px;margin-top: -60px" type="button"
+                            class="btn btn-primary">查询
+                    </button>
                 </div>
             </div>
+            <!--为ECharts准备一个具备大小（宽高）的Dom--> <!--修改-->
+            <div id="echartsMTBF1" class="cssEcharts"></div>
         </div>
+        <div class="cssLabel">
+            <!--修改-->
+            <label style="font-size: 20px;margin-top: -10px">单一系统单一设备年度MTBF</label>
             <div class="row">
                 <div class="col-md-4">
                     <!--修改-->
@@ -344,8 +226,8 @@
                         <label style="margin-left: 38px">系统:</label>
                     </div>
                     <div class="col-md-5" style="margin-left: -73px;margin-top: -8px">
-                        <select class="selectpicker" onchange="selectOperation('select2_2','select2_3','select2_4')"
-                                id="select2_2" name="select2_2" title="请选择系统">
+                        <select class="selectpicker" onchange="selectOperation('select2_1','select2_2','select2_3')"
+                                id="select2_1" name="select2_1" title="请选择系统">
                             <option value="6管30mm舰炮系统">6管30mm舰炮系统</option>
                             <option value="630系统">630系统</option>
                             <option value="H/PJ26型单管76mm舰炮系统">H/PJ26型单管76mm舰炮系统</option>
@@ -384,9 +266,9 @@
                 <div class="col-md-5">
                     <label class="col-md-5" style="margin-left: -5px;">舰队:</label>
                     <div style="margin-left: -123px;margin-top: -7px" class="col-md-3">
-                        <select class="selectpicker" onchange="selectOperation('select2_3','select2_2','select2_4')"
-                                id="select2_3"
-                                name="select2_3" title="请选择舰队">
+                        <select class="selectpicker" onchange="selectOperation('select2_2','select2_1','select2_3')"
+                                id="select2_2"
+                                name="select2_2" title="请选择舰队">
                             <option value="205大队">205大队</option>
                             <option value="21大队">21大队</option>
                             <option value="14大队">14大队</option>
@@ -404,8 +286,8 @@
                     <label style="margin-left: -145px">试验:</label>
                     <div style="margin-left: -80px;margin-top: -32px">
                         <!--修改-->
-                        <select class="selectpicker" onchange="selectOperation('select2_4','select2_2','select2_3')"
-                                id="select2_4" name="select2_4" title="请选择试验">
+                        <select class="selectpicker" onchange="selectOperation('select2_3','select2_1','select2_2')"
+                                id="select2_3" name="select2_3" title="请选择试验">
                             <option value="4A系泊航行">4A系泊航行</option>
                             <option value="4A陆试">4A陆试</option>
                             <option value="54系泊航行">54系泊航行</option>
@@ -418,11 +300,129 @@
                         </select><br>
                     </div>
                 </div>
+            </div>
+            <div class="row">
+                <!--修改-->
+                <form id="myForm2" class="form-horizontal">
+                    <div class="form-group clearfix">
+                        <div style="margin-left: -30px;margin-top: 10px" class="col-md-5 pd-0">
+                            <label for="selectTime" class="col-md-4 control-label">开始时间:</label>
+                            <div class="col-md-6">
+                                <div class="input-group">
+                                        <span class="input-group-addon" id="sizing-addon2">
+                                            <i class="fa fa-calendar" aria-hidden="true"></i>
+                                        </span>
+                                    <!--修改-->
+                                    <input id="startDate2" name="startDate2" type="text" autocomplete="off"
+                                           class="form-control"
+                                           aria-describedby="startDate2" placeholder="请输入开始时间"
+                                           data-provide="datepicker">
+                                </div>
+                                <span class="error-msg"></span>
+                            </div>
+                        </div>
+                        <div style="margin-left: -150px;margin-top: 10px" class="col-md-5 pd-0">
+                            <label for="selectTime" class="col-md-4 control-label">结束时间:</label>
+                            <div class="col-md-6">
+                                <div class="input-group">
+                                        <span class="input-group-addon" id="sizing-addon2">
+                                            <i class="fa fa-calendar" aria-hidden="true"></i>
+                                        </span>
+                                    <!--修改-->
+                                    <input id="endDate2" name="endDate2" type="text" autocomplete="off"
+                                           class="form-control"
+                                           aria-describedby="endDate2" placeholder="请输入结束时间" data-provide="datepicker">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--修改-->
+                    <div>
+                        <div class="col-md-3" style="margin-left: 697px;margin-top: -40px">
+                            <label>设备:</label>
+                        </div>
+                        <div class="col-md-3" style="margin-left: 722px;margin-top: -50px">
+                            <select class="selectpicker pull-right" id="select2_4" name="select2_4">
+                                <option value="H/PJ13型6管30mm舰炮">H/PJ13型6管30mm舰炮</option>
+                                <option value="ZGJ-1C光电跟踪仪">ZGJ-1C光电跟踪仪</option>
+                                <option value="触摸屏">触摸屏</option>
+                                <option value="630舰炮">630舰炮</option>
+                                <option value="监控柜">监控柜</option>
+                                <option value="光电跟踪仪">光电跟踪仪</option>
+                                <option value="随动系统">随动系统</option>
+                                <option value="630舰炮">630舰炮</option>
+                                <option value="上软导引">上软导引</option>
+                                <option value="下软导引">下软导引</option>
+                                <option value="随动部分">随动部分</option>
+                                <option value="机械部分">机械部分</option>
+                                <option value="导气设备">导气设备</option>
+                                <option value="冷却系统">冷却系统</option>
+                                <option value="双联装57mm舰炮">双联装57mm舰炮</option>
+                                <option value="双联装37mm舰炮">双联装37mm舰炮</option>
+                                <option value="66式双57mm舰炮">66式双57mm舰炮</option>
+                                <option value="61式双37mm舰炮（一）">61式双37mm舰炮（一）</option>
+                                <option value="61式双38mm舰炮（二）">61式双38mm舰炮（二）</option>
+                                <option value="61式双39mm舰炮（三）">61式双39mm舰炮（三）</option>
+                                <option value="H/PJ17单管30毫米舰炮">H/PJ17单管30毫米舰炮</option>
+                                <option value="单76毫米舰炮">单76毫米舰炮</option>
+                                <option value="630舰炮火控设备">630舰炮火控设备</option>
+                                <option value="H/PJ13型6管30mm舰炮">H/PJ13型6管30mm舰炮</option>
+                                <option value="630舰炮">630舰炮</option>
+                                <option value="H/ZGJ-1C光电跟踪仪">H/ZGJ-1C光电跟踪仪</option>
+                                <option value="H/PJ130401监控柜">H/PJ130401监控柜</option>
+                                <option value="H/PJ130402监控柜">H/PJ130402监控柜</option>
+                                <option value="H/PJ130403监控柜">H/PJ130403监控柜</option>
+                                <option value="1C光电跟踪仪">1C光电跟踪仪</option>
+                                <option value="单管30毫米舰炮">单管30毫米舰炮</option>
+                                <option value="卡什坦导弹火炮系统">卡什坦导弹火炮系统</option>
+                                <option value="61F双37炮">61F双37炮</option>
+                                <option value="61F双25炮">61F双25炮</option>
+                                <option value="火控设备">火控设备</option>
+                                <option value="349A跟踪雷达">349A跟踪雷达</option>
+                                <option value="火控设备">火控设备</option>
+                                <option value="347B跟踪雷达">347B跟踪雷达</option>
+                                <option value="单76毫米舰炮">单76毫米舰炮</option>
+                                <option value="349A雷达">349A雷达</option>
+                                <option value="扬弹机">扬弹机</option>
+                                <option value="76监控台">76监控台</option>
+                                <option value="枪炮长显控台">枪炮长显控台</option>
+                                <option value="H/ZPJ-2C指挥仪">H/ZPJ-2C指挥仪</option>
+                                <option value="主炮雷达">主炮雷达</option>
+                                <option value="跟踪雷达">跟踪雷达</option>
+                                <option value="弹药装载机">弹药装载机</option>
+                                <option value="左前副炮随动">左前副炮随动</option>
+                                <option value="右前副炮随动">右前副炮随动</option>
+                                <option value="左后副炮随动">左后副炮随动</option>
+                                <option value="右后副炮随动">右后副炮随动</option>
+                                <option value="前主炮随动">前主炮随动</option>
+                                <option value="后主炮随动">后主炮随动</option>
+                                <option value="主炮指挥仪">主炮指挥仪</option>
+                                <option value="副炮指挥仪">副炮指挥仪</option>
+                                <option value="副枪炮长显控台">副枪炮长显控台</option>
+                                <option value="枪炮长显控台">枪炮长显控台</option>
+                                <option value="JM-90瞄准仪">JM-90瞄准仪</option>
+                                <option value="H/ZPJ-4C指挥仪">H/ZPJ-4C指挥仪</option>
+                                <option value="副炮雷达">副炮雷达</option>
+                                <option value="随动控制柜">随动控制柜</option>
+                                <option value="反潜指挥仪">反潜指挥仪</option>
+                                <option value="单76毫米舰炮">单76毫米舰炮</option>
+                                <option value="火控系统">火控系统</option>
+                                <option value="H/ZFJ-1型近程反导火控设备">H/ZFJ-1型近程反导火控设备</option>
+                                <option value="H/LJP-349跟踪雷达">H/LJP-349跟踪雷达</option>
+                                <option value="H/ZGJ-4光电跟踪仪">H/ZGJ-4光电跟踪仪</option>
+                                <option value="H/JWJ-1捷联垂直参考基准">H/JWJ-1捷联垂直参考基准</option>
+                                <option value="H/PJ12型7管30mm舰炮">H/PJ12型7管30mm舰炮</option>
+                                <option value="H/PJ13型6管30mm舰炮">H/PJ13型6管30mm舰炮</option>
+                                <option value="ZGJ-1C光电跟踪仪">ZGJ-1C光电跟踪仪</option>
+                            </select><br>
+                        </div>
+                    </div>
+                </form>
                 <div class="col-md-3">
                     <!--修改-->
                     <button id="button2"
                             onclick="searchOnclick('myForm2','echartsMTBF2',option_line,'startDate2','endDate2','/dataurl1')"
-                            style="margin-left: 1010px;margin-top: -60px" type="button"
+                            style="margin-left: 1010px;margin-top: -100px" type="button"
                             class="btn btn-primary">查询
                     </button>
                 </div>
@@ -442,18 +442,15 @@
             })
         }
 
-        // 点击选项框获取值，并禁用其他框
+        // 点击除了设备外其他选项框获取值，并恢复其他两个框至默认状态
         // 参数说明
         // onChangeId ‘要获取值的选项框id’
-        // disableId1,disableId2 ‘要禁用选项框的id’
+        // disableId1,disableId2 ‘要恢复选项框的id’
         var selectValue //全局变量
         function selectOperation(onChangeId, disableId1, disableId2) {
-            //获取当前选择框的值
+            //如果不是设备选框获取当前选择框的值
             getValue = $("#" + onChangeId).val();
-            selectValue = {name: onChangeId, value: getValue}
-            //禁用其他选择框
-            {#$("#" + disableId1).attr("disabled", "disabled");#}
-            {#$("#" + disableId2).attr("disabled", "disabled");#}
+            selectValue = {name: onChangeId, value: getValue};
             //恢复 除了设备的其他选择框为默认状态
                 document.getElementById(disableId1).options.selectedIndex = 0; //回到初始状态
                 $("#" + disableId1).selectpicker('refresh');//对searchPayState这个下拉框进行重置刷新
