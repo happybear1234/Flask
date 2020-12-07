@@ -1,0 +1,169 @@
+{% extends 'basic.html' %}
+
+{% block title %}计算输入{% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{{ url_for('static',filename='input.css') }}">
+    <style>
+        .input {
+            width: 400px;
+            margin: 0 auto;
+            line-height: 3;
+        }
+
+        select {
+            vertical-align: middle;
+            margin: auto;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <div class="input" id="header">
+        <h1 style="text-align: center">计算输入</h1>
+        <form action="
+            /login" method="post" accept-charset="UTF-8">
+            <label>请输入系统名</label>
+            <select class="selectpicker pull-right" name="system">
+                <option value="systemall">所有系统</option>
+                <option value="6管30mm舰炮系统">6管30mm舰炮系统</option>
+                <option value="630系统">630系统</option>
+                <option value="H/PJ26型单管76mm舰炮系统">H/PJ26型单管76mm舰炮系统</option>
+                <option value="H/PJ13型6管30mm舰炮系统">H/PJ13型6管30mm舰炮系统</option>
+                <option value="单76系统">单76系统</option>
+                <option value="单76舰炮火控系统">单76舰炮火控系统</option>
+                <option value="双100炮系统">双100炮系统</option>
+                <option value="单76炮系统">单76炮系统</option>
+                <option value="单100系统">单100系统</option>
+                <option value="H/PJ333B舰炮系统">H/PJ333B舰炮系统</option>
+                <option value="双100炮系统">双100炮系统</option>
+                <option value="双100系统">双100系统</option>
+                <option value="双37系统">双37系统</option>
+                <option value="3200火箭炮系统">3200火箭炮系统</option>
+                <option value="1130舰炮武器系统">1130舰炮武器系统</option>
+                <option value="单管76舰炮武器系统">单管76舰炮武器系统</option>
+                <option value="万发系统">万发系统</option>
+                <option value="857副炮系统">857副炮系统</option>
+                <option value="单76主炮系统">单76主炮系统</option>
+                <option value="单130系统">单130系统</option>
+                <option value="非系统">非系统</option>
+                <option value="400H2逆变电源">400H2逆变电源</option>
+                <option value="11管30mm舰炮系统">11管30mm舰炮系统</option>
+                <option value="360系统">360系统</option>
+                <option value="69A式双30mm舰炮系统">69A式双30mm舰炮系统</option>
+                <option value="76F双37㎜舰炮">76F双37㎜舰炮</option>
+                <option value="7管30mm舰炮系统">7管30mm舰炮系统</option>
+                <option value="857系统">857系统</option>
+                <option value="H/LJQ-363A搜索雷达">H/LJQ-363A搜索雷达</option>
+                <option value="H/PJ26型单管76mm舰炮">H/PJ26型单管76mm舰炮</option>
+                <option value="АК-130舰炮">АК-130舰炮</option>
+            </select><br>
+            <label>请输入舰队名</label>
+            <select class="selectpicker pull-right" name="brigade">
+                <option value="brigadeall">所有舰队</option>
+                <option value="205大队">205大队</option>
+                <option value="21大队">21大队</option>
+                <option value="14大队">14大队</option>
+                <option value="登五支队">登五支队</option>
+                <option value="护13支队">护13支队</option>
+                <option value="护14支队">护14支队</option>
+                <option value="护15支队">护15支队</option>
+                <option value="护16支队">护16支队</option>
+                <option value="驱3支队">驱3支队</option>
+                <option value="作2支队">作2支队</option>
+            </select><br>
+            <label>请输入开始时间</label>
+            <select class="selectpicker pull-right" name="start">
+                <option value="2004.1.1">2004.1.1</option>
+                <option value="2005.1.1">2005.1.1</option>
+                <option value="2006.1.1">2006.1.1</option>
+                <option value="2007.1.1">2007.1.1</option>
+                <option value="2008.1.1">2008.1.1</option>
+                <option value="2009.1.1">2009.1.1</option>
+                <option value="2010.1.1">2010.1.1</option>
+                <option value="2011.1.1">2011.1.1</option>
+                <option value="2012.1.1">2012.1.1</option>
+                <option value="2013.1.1">2013.1.1</option>
+                <option value="2014.1.1">2014.1.1</option>
+                <option value="2015.1.1">2015.1.1</option>
+                <option value="2016.1.1">2016.1.1</option>
+                <option value="2017.1.1">2017.1.1</option>
+                <option value="2018.1.1">2018.1.1</option>
+                <option value="2019.1.1">2019.1.1</option>
+                <option value="2020.1.1">2020.1.1</option>
+                <option value="2021.1.1">2021.1.1</option>
+                <option value="2022.1.1">2022.1.1</option>
+                <option value="2023.1.1">2023.1.1</option>
+                <option value="2024.1.1">2024.1.1</option>
+                <option value="2025.1.1">2025.1.1</option>
+                <option value="2026.1.1">2026.1.1</option>
+                <option value="2027.1.1">2027.1.1</option>
+                <option value="2028.1.1">2028.1.1</option>
+                <option value="2029.1.1">2029.1.1</option>
+            </select><br>
+            <label>请输入结束时间</label>
+            <select class="selectpicker pull-right" name="end">
+                <option value="2004.12.31">2004.12.31</option>
+                <option value="2005.12.31">2005.12.31</option>
+                <option value="2006.12.31">2006.12.31</option>
+                <option value="2007.12.31">2007.12.31</option>
+                <option value="2008.12.31">2008.12.31</option>
+                <option value="2009.12.31">2009.12.31</option>
+                <option value="2010.12.31">2010.12.31</option>
+                <option value="2011.12.31">2011.12.31</option>
+                <option value="2012.12.31">2012.12.31</option>
+                <option value="2013.12.31">2013.12.31</option>
+                <option value="2014.12.31">2014.12.31</option>
+                <option value="2015.12.31">2015.12.31</option>
+                <option value="2016.12.31">2016.12.31</option>
+                <option value="2017.12.31">2017.12.31</option>
+                <option value="2018.12.31">2018.12.31</option>
+                <option value="2019.12.31">2019.12.31</option>
+                <option value="2020.12.31">2020.12.31</option>
+                <option value="2021.12.31">2021.12.31</option>
+                <option value="2022.12.31">2022.12.31</option>
+                <option value="2023.12.31">2023.12.31</option>
+                <option value="2024.12.31">2024.12.31</option>
+                <option value="2025.12.31">2025.12.31</option>
+                <option value="2026.12.31">2026.12.31</option>
+                <option value="2027.12.31">2027.12.31</option>
+                <option value="2028.12.31">2028.12.31</option>
+                <option value="2029.12.31">2029.12.31</option>
+            </select><br>
+            <label>请输入计算方式</label>
+            <select class="selectpicker pull-right" name="cal">
+                <option value="modall">所有平均方式</option>
+                <option value="mod1">混合平均</option>
+                <option value="mod2">按舰队平均</option>
+                <option value="mod3">按试验平均</option>
+            </select><br>
+            <label>请输入试验方式</label>
+            <select class="selectpicker pull-right" name="fun">
+                <option value="experimentall">所有试验方式</option>
+                <option value="4A系泊航行">4A系泊航行</option>
+                <option value="4A陆试">4A陆试</option>
+                <option value="54系泊航行">54系泊航行</option>
+                <option value="55陆试">55陆试</option>
+                <option value="052陆试">052陆试</option>
+                <option value="2D陆试">2D陆试</option>
+                <option value="2D系泊航行">2D系泊航行</option>
+                <option value="6A系泊航行">6A系泊航行</option>
+                <option value="172系泊航行">172系泊航行</option>
+            </select><br>
+            <div style="margin-left: 60px"><input type="submit" class="btn btn-primary" value="输入完毕"></div>
+        </form>
+        <p></p>    <!-- 点击运行Python按钮，将本地执行test4.py程序 -->
+        <div style="float:right;margin-top:-52px;margin-right: 60px" id="program">
+            <input type="button" class="btn btn-primary" value="运行python" onclick="window.location.href = '/process'">
+        </div>     <!-- 点击结果, 将在框内显示出计算的结果-->
+        <!--<div id="result">-->
+        <!-- onclick="exec1('python35 D:\Test\SQLDATA.py')"-->
+        <!--<p><a href="result.txt" target="result">显示结果</a></p>-->
+        <!--<iframe name="result" width="100" height="30" scrolling="no" frameborder="3"></iframe>-->
+        <!--</div>     <p></p>-->
+        <div class="alert alert-info" role="alert" id="result"> 使用说明：文本框输入按照要求对应的输入，然后依次点击 [输入完毕] [运行python]
+        </div>
+    </div>
+{% endblock %}
+
+{% block js %}
+{% endblock %}
